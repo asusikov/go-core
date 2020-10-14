@@ -4,24 +4,24 @@ import (
 	"flag"
 	"fmt"
 
-	"go-core.course/fibonacci/pkg/fibonacci"
+	"go-core.course/math/pkg/factorial"
 )
 
 func main() {
   var inputNumber = parseInputNumber()
 
-	var fibonacciResult, err = fibonacci.Calculate(inputNumber)
+	var factorialResult, err = factorial.Calculate(inputNumber)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	fmt.Println("Число Фибоначчи равно", fibonacciResult)
+	fmt.Println("Факториал равен", factorialResult)
 }
 
 func parseInputNumber() int {
-	var inputNumber = *flag.Int("n", -1, "Значение для вычисления числа Фибоначчи")
+	var inputNumber = flag.Int("n", -1, "Значение для вычисления факториала")
 	flag.Parse()
-	fmt.Println("Высчитываем число Фибоначчи для", inputNumber)
-  return inputNumber
+	fmt.Println("Высчитываем факториал для", *inputNumber)
+  return *inputNumber
 }
