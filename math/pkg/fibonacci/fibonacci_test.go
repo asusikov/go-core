@@ -1,12 +1,12 @@
 package fibonacci
 
 import (
-	"testing"
 	"reflect"
+	"testing"
 )
 
 func Test_Calculate_whenInputNumberIsRight(t *testing.T) {
-	want := []int{1,1,2,3,5}
+	want := []int{1, 1, 2, 3, 5}
 	got, err := Calculate(5)
 	if err != nil {
 		t.Fatal(err)
@@ -28,7 +28,7 @@ func Test_Calculate_whenInputNumberIs1(t *testing.T) {
 }
 
 func Test_Calculate_whenInputNumberIs2(t *testing.T) {
-	want := []int{1,1}
+	want := []int{1, 1}
 	got, err := Calculate(2)
 	if err != nil {
 		t.Fatal(err)
