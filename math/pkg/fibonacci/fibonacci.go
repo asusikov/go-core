@@ -11,20 +11,34 @@ func Calculate(deepSize int) (result []int, err error) {
 	if err != nil {
 		return []int{}, err
 	}
+
 	if deepSize == 1 {
 		result = []int{1}
 	} else {
-		result = append([]int{1, 1}, recursiveCalculate(1, 1, deepSize-2)...)
+		result = calculate(deepSize)
 	}
 	return result, nil
+}
+
+func calculate(deepSize int) []int {
+	first := 1
+	second := 1
+	return append(
+		[]int{first, second},
+		recursiveCalculate(first, second, deepSize-2)...,
+	)
 }
 
 func recursiveCalculate(first int, second int, deepSize int) []int {
 	if deepSize <= 0 {
 		return []int{}
 	}
+
 	newElement := first + second
-	return append([]int{newElement}, recursiveCalculate(second, newElement, deepSize-1)...)
+	return append(
+		[]int{newElement},
+		recursiveCalculate(second, newElement, deepSize-1)...,
+	)
 }
 
 func validateInputNumber(number int) error {
@@ -35,5 +49,6 @@ func validateInputNumber(number int) error {
 	if number > maxInputNumber {
 		return fmt.Errorf("Максимальное значение входного параметра - %d", maxInputNumber)
 	}
+
 	return nil
 }
