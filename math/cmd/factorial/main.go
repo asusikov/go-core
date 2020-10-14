@@ -23,5 +23,5 @@ func parseInputNumber() int {
 	inputNumber := flag.Int("n", -1, "Значение для вычисления факториала")
 	flag.Parse()
 	fmt.Println("Высчитываем факториал для", *inputNumber)
-  return *inputNumber
+	return *inputNumber
 }
