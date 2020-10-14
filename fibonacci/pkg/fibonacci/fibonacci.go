@@ -23,6 +23,10 @@ func calculate(number int) int {
 }
 
 func validateInputNumber(number int) error {
+	if number < 1 {
+		return fmt.Errorf("Входной параметр должен быть больше или равен 1")
+	}
+
 	if number > maxInputNumber {
 		return fmt.Errorf("Максимальное значение входного параметра - %d", maxInputNumber)
 	}

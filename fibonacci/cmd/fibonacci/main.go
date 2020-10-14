@@ -15,7 +15,8 @@ func main() {
 	var fibonacciResult, err = fibonacci.Calculate(*inputNumber)
 	if err != nil {
 		fmt.Println(err)
-	} else {
-		fmt.Println("Число Фибонначи равно", fibonacciResult)
-	}
+		return
+	} 
+
+	fmt.Println("Число Фибонначи равно", fibonacciResult)
 }
