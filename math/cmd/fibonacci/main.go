@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-  var inputNumber = parseInputNumber()
+	var inputNumber = parseInputNumber()
 
 	var fibonacciResult, err = fibonacci.Calculate(*inputNumber)
 	if err != nil {
@@ -23,5 +23,5 @@ func parseInputNumber() *int {
 	var inputNumber = flag.Int("n", -1, "Значение для вычисления числа Фибоначчи")
 	flag.Parse()
 	fmt.Println("Высчитываем число Фибоначчи для", *inputNumber)
-  return inputNumber
+	return inputNumber
 }

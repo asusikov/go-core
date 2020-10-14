@@ -1,4 +1,4 @@
-package main
+pfackage main
 
 import (
 	"flag"
