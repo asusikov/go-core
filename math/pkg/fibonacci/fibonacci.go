@@ -11,16 +11,20 @@ func Calculate(deepSize int) (result []int, err error) {
 	if err != nil {
 		return []int{}, err
 	}
-	result = append([]int{1, 1}, recursiveCalculate(1, 1, deepSize - 2)...)
+	if deepSize == 1 {
+		result = []int{1}
+	} else {
+		result = append([]int{1, 1}, recursiveCalculate(1, 1, deepSize-2)...)
+	}
 	return result, nil
 }
 
 func recursiveCalculate(first int, second int, deepSize int) []int {
-	if deepSize == 0 {
+	if deepSize <= 0 {
 		return []int{}
 	}
 	newElement := first + second
-	return append([]int{newElement}, recursiveCalculate(second, newElement, deepSize - 1)...)
+	return append([]int{newElement}, recursiveCalculate(second, newElement, deepSize-1)...)
 }
 
 func validateInputNumber(number int) error {
