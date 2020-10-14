@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	var inputNumber = flag.Int("n", -1, "help message for flag n")
+	var inputNumber = flag.Int("n", -1, "Значение для вычисления числа Фибоначчи")
 	flag.Parse()
 	fmt.Println("Высчитываем число Фибоначчи для", *inputNumber)
 
@@ -18,5 +18,5 @@ func main() {
 		return
 	}
 
-	fmt.Println("Число Фибонначи равно", fibonacciResult)
+	fmt.Println("Число Фибоначчи равно", fibonacciResult)
 }
