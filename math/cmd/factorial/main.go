@@ -1,4 +1,4 @@
-pfackage main
+package main
 
 import (
 	"flag"
@@ -8,9 +8,9 @@ import (
 )
 
 func main() {
-  var inputNumber = parseInputNumber()
+	inputNumber := parseInputNumber()
 
-	var factorialResult, err = factorial.Calculate(inputNumber)
+	factorialResult, err := factorial.Calculate(inputNumber)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -20,7 +20,7 @@ func main() {
 }
 
 func parseInputNumber() int {
-	var inputNumber = flag.Int("n", -1, "Значение для вычисления факториала")
+	inputNumber := flag.Int("n", -1, "Значение для вычисления факториала")
 	flag.Parse()
 	fmt.Println("Высчитываем факториал для", *inputNumber)
   return *inputNumber

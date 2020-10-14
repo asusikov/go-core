@@ -8,20 +8,20 @@ import (
 )
 
 func main() {
-	var inputNumber = parseInputNumber()
+	inputNumber := parseInputNumber()
 
-	var fibonacciResult, err = fibonacci.Calculate(*inputNumber)
+	fibonacciResult, err := fibonacci.Calculate(*inputNumber)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	fmt.Println("Число Фибоначчи равно", fibonacciResult)
+	fmt.Println("Числа Фибоначчи: ", fibonacciResult)
 }
 
 func parseInputNumber() *int {
-	var inputNumber = flag.Int("n", -1, "Значение для вычисления числа Фибоначчи")
+	inputNumber := flag.Int("n", -1, "Значение для вычисления чисел Фибоначчи")
 	flag.Parse()
-	fmt.Println("Высчитываем число Фибоначчи для", *inputNumber)
+	fmt.Println("Высчитываем числа Фибоначчи для", *inputNumber)
 	return inputNumber
 }
