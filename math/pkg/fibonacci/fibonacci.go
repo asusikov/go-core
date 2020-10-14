@@ -29,15 +29,15 @@ func calculate(deepSize int) []int {
 	)
 }
 
-func recursiveCalculate(first int, second int, deepSize int) []int {
-	if deepSize <= 0 {
+func recursiveCalculate(first int, second int, deepLevel int) []int {
+	if deepLevel <= 0 {
 		return []int{}
 	}
 
 	newElement := first + second
 	return append(
 		[]int{newElement},
-		recursiveCalculate(second, newElement, deepSize-1)...,
+		recursiveCalculate(second, newElement, deepLevel-1)...,
 	)
 }
 
