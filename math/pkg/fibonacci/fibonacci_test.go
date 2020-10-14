@@ -2,15 +2,16 @@ package fibonacci
 
 import (
 	"testing"
+	"reflect"
 )
 
 func Test_Calculate_whenInputNumberIsRight(t *testing.T) {
-	want := 6
-	got, err := Calculate(3)
+	want := []int{1,1,2,3,5}
+	got, err := Calculate(5)
 	if err != nil {
 		t.Fatal(err)
 	}
-	if got != want {
+	if !reflect.DeepEqual(got, want) {
 		t.Fatalf("получили %d, ожидали %d", got, want)
 	}
 }

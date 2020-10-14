@@ -6,20 +6,21 @@ import (
 
 const maxInputNumber = 20
 
-func Calculate(number int) (result int, err error) {
-	err = validateInputNumber(number)
+func Calculate(deepSize int) (result []int, err error) {
+	err = validateInputNumber(deepSize)
 	if err != nil {
-		return 0, err
+		return []int{}, err
 	}
-	return calculate(number), nil
+	result = append([]int{1, 1}, recursiveCalculate(1, 1, deepSize - 2)...)
+	return result, nil
 }
 
-func calculate(number int) int {
-	if number == 1 {
-		return 1
+func recursiveCalculate(first int, second int, deepSize int) []int {
+	if deepSize == 0 {
+		return []int{}
 	}
-	nextResult := calculate(number - 1)
-	return number * nextResult
+	newElement := first + second
+	return append([]int{newElement}, recursiveCalculate(second, newElement, deepSize - 1)...)
 }
 
 func validateInputNumber(number int) error {
