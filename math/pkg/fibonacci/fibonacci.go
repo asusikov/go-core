@@ -5,6 +5,8 @@ import (
 )
 
 const maxInputNumber = 20
+const firstFibonacciElement = 1
+const secondFibonacciElement = 1
 
 func Calculate(deepSize int) (result []int, err error) {
 	err = validateInputNumber(deepSize)
@@ -13,7 +15,7 @@ func Calculate(deepSize int) (result []int, err error) {
 	}
 
 	if deepSize == 1 {
-		result = []int{1}
+		result = []int{firstFibonacciElement}
 	} else {
 		result = calculate(deepSize)
 	}
@@ -21,11 +23,9 @@ func Calculate(deepSize int) (result []int, err error) {
 }
 
 func calculate(deepSize int) []int {
-	first := 1
-	second := 1
 	return append(
-		[]int{first, second},
-		recursiveCalculate(first, second, deepSize-2)...,
+		[]int{firstFibonacciElement, secondFibonacciElement},
+		recursiveCalculate(firstFibonacciElement, secondFibonacciElement, deepSize-2)...,
 	)
 }
 
