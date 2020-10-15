@@ -1,25 +1,19 @@
 package fibonacci
 
-import (
-	"fmt"
-)
-
-const maxInputNumber = 20
 const firstFibonacciElement = 1
 const secondFibonacciElement = 1
 
-func Calculate(deepSize int) (result []int, err error) {
-	err = validateInputNumber(deepSize)
-	if err != nil {
-		return []int{}, err
-	}
-
-	if deepSize == 1 {
+func Calculate(deepSize int) []int {
+	var result []int
+	switch {
+	case deepSize < 1:
+		result = []int{}
+	case deepSize == 1:
 		result = []int{firstFibonacciElement}
-	} else {
+	default:
 		result = calculate(deepSize)
 	}
-	return result, nil
+	return result
 }
 
 func calculate(deepSize int) []int {
@@ -39,16 +33,4 @@ func recursiveCalculate(first int, second int, deepLevel int) []int {
 		[]int{newElement},
 		recursiveCalculate(second, newElement, deepLevel-1)...,
 	)
-}
-
-func validateInputNumber(number int) error {
-	if number < 1 {
-		return fmt.Errorf("Входной параметр должен быть больше или равен 1")
-	}
-
-	if number > maxInputNumber {
-		return fmt.Errorf("Максимальное значение входного параметра - %d", maxInputNumber)
-	}
-
-	return nil
 }

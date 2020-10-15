@@ -7,21 +7,27 @@ import (
 	"go-core.course/math/pkg/fibonacci"
 )
 
-func main() {
-	inputNumber := parseInputNumber()
+const maxInputNumber = 20
 
-	fibonacciResult, err := fibonacci.Calculate(*inputNumber)
+func main() {
+	inputNumber, err := parseInputNumber()
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
+	fmt.Println("Высчитываем числа Фибоначчи для", inputNumber)
 
+	fibonacciResult := fibonacci.Calculate(inputNumber)
 	fmt.Println("Числа Фибоначчи: ", fibonacciResult)
 }
 
-func parseInputNumber() *int {
+func parseInputNumber() (int, error) {
 	inputNumber := flag.Int("n", -1, "Значение для вычисления чисел Фибоначчи")
 	flag.Parse()
-	fmt.Println("Высчитываем числа Фибоначчи для", *inputNumber)
-	return inputNumber
+
+	if *inputNumber > maxInputNumber {
+		return *inputNumber, fmt.Errorf("Максимальное значение входного параметра - %d", maxInputNumber)
+	}
+
+	return *inputNumber, nil
 }
