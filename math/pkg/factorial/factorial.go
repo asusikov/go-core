@@ -7,7 +7,7 @@ import (
 func Calculate(number int) (result int, err error) {
 	err = validateInputNumber(number)
 	if err != nil {
-		return 0, err
+		return result, err
 	}
 	return calculate(number), nil
 }
