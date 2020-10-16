@@ -16,7 +16,7 @@ func main() {
 	fmt.Println("Высчитываем числo Фибоначчи для", inputNumber)
 
 	fibonacciResult := fibonacci.CalculateNumber(inputNumber)
-	fmt.Println("Числа Фибоначчи: ", fibonacciResult)
+	fmt.Println("Число Фибоначчи: ", fibonacciResult)
 }
 
 func parseInputNumber(maxInputNumber int) (int, error) {
