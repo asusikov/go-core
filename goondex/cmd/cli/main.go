@@ -26,6 +26,7 @@ func main() {
 
 	eng := engine.New()
 	eng.Index(data)
+
 	fmt.Println("[Поиск] Запрос -", *query)
 	res := eng.Search(*query)
 
