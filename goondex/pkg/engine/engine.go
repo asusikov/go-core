@@ -9,6 +9,10 @@ type Engine struct {
 	links map[string]string
 }
 
+func New() *Engine {
+	return &Engine{}
+}
+
 // Index - индексировать хэш с ссылками
 func (eng *Engine) Index(links map[string]string) {
 	eng.links = links

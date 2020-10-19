@@ -14,10 +14,10 @@ func main() {
 	if err != nil {
 		log.Printf("ошибка при сканировании сайта %s: %v\n", url, err)
 	}
-	eng := engine.Engine{}
+	eng := engine.New()
 	eng.Index(data)
 	res := eng.Search("Гарантия")
 	for k, v := range res {
-		fmt.Printf("Страница %s имеет адрес: %s\n", v, k)
+		fmt.Printf("Страница \"%s\" имеет адрес: %s\n", v, k)
 	}
 }
