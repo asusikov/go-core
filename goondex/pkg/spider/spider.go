@@ -3,7 +3,6 @@
 package spider
 
 import (
-	"errors"
 	"net/http"
 	"strings"
 
@@ -15,7 +14,10 @@ import (
 func Scan(url string, depth int) (data map[string]string, err error) {
 	data = make(map[string]string)
 
-	parse(url, url, depth, data)
+	err = parse(url, url, depth, data)
+	if err != nil {
+		return data, err
+	}
 
 	return data, nil
 }
@@ -42,29 +44,38 @@ func parse(url, baseurl string, depth int, data map[string]string) error {
 
 	links := pageLinks(nil, page)
 	for _, link := range links {
-		absoluteLink, err := absoluteLink(link, baseurl)
-		if err == nil && data[absoluteLink] == "" {
-			parse(absoluteLink, baseurl, depth-1, data)
+		// ссылка уже отсканирована
+		if data[link] != "" {
+			continue
+		}
+
+		if isInternalLink(link, baseurl) {
+			nextLink := fullUrl(link, baseurl)
+			err := parse(nextLink, baseurl, depth-1, data)
+			if err != nil {
+				return err
+			}
 		}
 	}
 
 	return nil
 }
 
-// absoluteLink преобразует относительные ссылки в абсолютные
-func absoluteLink(link, baseurl string) (string, error) {
-	if strings.HasPrefix(link, "/") {
-		return baseurl + link, nil
-	} else if strings.HasPrefix(link, baseurl) {
-		return link, nil
-	}
-	return link, errors.New("external resource link")
+func isInternalLink(link string, baseurl string) bool {
+	return strings.HasPrefix(link, baseurl) || (strings.HasPrefix(link, "/") && len(link) > 1)
 }
 
-// pageTitle осуществляет рекурсивный обход HTML-страницы и возвращает значение элемента <tittle>.
+func fullUrl(link string, baseurl string) string {
+	// if strings.HasPrefix(link, "/") && len(link) > 1 {
+	// next := baseurl + link[1:]
+
+	return baseurl + strings.ReplaceAll(link, baseurl, "")
+}
+
+// pageTitle осуществляет рекурсивный обход HTML-страницы и возвращает значение элемента <title>.
 func pageTitle(n *html.Node) string {
 	var title string
-	if n.Type == html.ElementNode && n.Data == "title" {
+	if n.Type == html.ElementNode && n.Data == "title" && n.FirstChild != nil {
 		return n.FirstChild.Data
 	}
 	for c := n.FirstChild; c != nil; c = c.NextSibling {
