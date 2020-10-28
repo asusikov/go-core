@@ -57,7 +57,7 @@ func runInteractive(eng *engine.Engine) {
 
 		reader := bufio.NewReader(os.Stdin)
 		query, _ := reader.ReadString('\n')
-		query = strings.Replace(query, "\n", "", -1)
+		query = strings.Replace(query, "\r\n", "", -1)
 
 		if query == exitCommand {
 			return
