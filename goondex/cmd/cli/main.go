@@ -6,62 +6,63 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 
 	"goondex/pkg/engine"
 	"goondex/pkg/spider"
 )
 
 func main() {
-	// const url = "https://thinknetica.com/"
-	// const query = "Гарантия"
-	const depth = 3
+	const depth = 2
 
-	url := flag.String("url", "https://thinknetica.com/", "Адрес сайта для сканирования")
-	query := flag.String("q", "", "Строка для поиска")
-	isInteractive := flag.Bool("i", false, "Интерактивный режим")
+	var url string
+	flag.StringVar(&url, "url", "https://bash.im/", "Адрес сайта для сканирования")
+	var query string
+	flag.StringVar(&query, "q", "", "Строка для поиска")
+	var isInteractive bool
+	flag.BoolVar(&isInteractive, "i", false, "Интерактивный режим")
 	flag.Parse()
 
-	fmt.Println("[Сканирование] Страница -", *url)
-	data, err := spider.Scan(*url, depth)
+	fmt.Println("[Сканирование] Страница -", url)
+	data, err := spider.Scan(url, depth)
 	if err != nil {
-		log.Printf("ошибка при сканировании сайта %s: %v\n", *url, err)
+		log.Fatalf("ошибка при сканировании сайта %s: %v\n", url, err)
 	}
 
 	eng := engine.New()
 	eng.Index(data)
 
-	if *isInteractive {
-		runInteractive(eng)
-	} else {
-		search(eng, *query)
+	runLoop := true
+	runSearch := false
+
+	for runLoop {
+		if isInteractive {
+			query, runSearch = interactiveInput()
+		}
+
+		if !runSearch {
+			fmt.Println("[Поиск] Запрос -", query)
+			res := eng.Search(query)
+			printResult(res)
+		}
+		runLoop = isInteractive && !runSearch
 	}
 }
 
-func search(eng *engine.Engine, query string) {
-	fmt.Println("[Поиск] Запрос -", query)
-	res := eng.Search(query)
-
+func printResult(result map[string]string) {
 	fmt.Println("[Результат]")
-	for k, v := range res {
+	for k, v := range result {
 		fmt.Printf("Страница \"%s\" имеет адрес: %s\n", v, k)
 	}
 }
 
-func runInteractive(eng *engine.Engine) {
+func interactiveInput() (input string, isExitCommand bool) {
 	const exitCommand = "/q"
 
-	for {
-		fmt.Println("[Ввод запроса] Введите запрос или /q для выхода:")
-		fmt.Print("> ")
+	fmt.Println("[Ввод запроса] Введите запрос или /q для выхода:")
+	fmt.Print("> ")
 
-		reader := bufio.NewReader(os.Stdin)
-		query, _ := reader.ReadString('\n')
-		query = strings.Replace(query, "\r\n", "", -1)
-
-		if query == exitCommand {
-			return
-		}
-		search(eng, query)
-	}
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	input = scanner.Text()
+	return input, input == exitCommand
 }
