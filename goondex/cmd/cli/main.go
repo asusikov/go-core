@@ -17,7 +17,7 @@ func main() {
 	// const query = "Гарантия"
 	const depth = 3
 
-	url := flag.String("url", "", "Адрес сайта для сканирования")
+	url := flag.String("url", "https://thinknetica.com/", "Адрес сайта для сканирования")
 	query := flag.String("q", "", "Строка для поиска")
 	isInteractive := flag.Bool("i", false, "Интерактивный режим")
 	flag.Parse()
