@@ -18,7 +18,7 @@ type Engine struct {
 
 func New() *Engine {
 	return &Engine{
-		scanner: &spider.Spider{},
+		scanner: spider.New(),
 	}
 }
 
