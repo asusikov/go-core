@@ -11,6 +11,10 @@ import (
 
 type Spider struct{}
 
+func New() *Spider {
+	return &Spider{}
+}
+
 // Scan осуществляет рекурсивный обход ссылок сайта, указанного в URL,
 // с учётом глубины перехода по ссылкам, переданной в depth.
 func (s *Spider) Scan(url string, depth int) (data map[string]string, err error) {
