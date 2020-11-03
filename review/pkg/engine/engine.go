@@ -5,14 +5,9 @@ import (
 	"strings"
 )
 
-// Позволяет сканировать сайты
-type Scanner interface {
-	Scan(string, int) (map[string]string, error)
-}
-
 // Поисковый движок
 type Engine struct {
-	scanner Scanner
+	scanner spider.Interface
 	links   map[string]string
 }
 
