@@ -8,6 +8,7 @@ import (
 	"os"
 
 	"goondex/pkg/engine"
+	"goondex/pkg/goondex"
 )
 
 func main() {
@@ -47,13 +48,11 @@ func initEngine(url string) (eng *engine.Engine, err error) {
 	return eng, nil
 }
 
-func printResult(result map[string]string) {
+func printResult(result []goondex.Page) {
 	fmt.Println("[Результат]")
-	ind := 1
-	for url, title := range result {
-		fmt.Printf("%d. %s\n", ind, url)
-		fmt.Println(title)
-		ind++
+	for index, page := range result {
+		fmt.Printf("%d. %s\n", index, page.Url)
+		fmt.Println(page.Title)
 	}
 }
 

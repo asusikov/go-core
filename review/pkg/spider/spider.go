@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"golang.org/x/net/html"
+	"goondex/pkg/goondex"
 )
 
 type Spider struct{}
@@ -17,15 +18,26 @@ func New() *Spider {
 
 // Scan осуществляет рекурсивный обход ссылок сайта, указанного в URL,
 // с учётом глубины перехода по ссылкам, переданной в depth.
-func (s *Spider) Scan(url string, depth int) (data map[string]string, err error) {
-	data = make(map[string]string)
+func (s *Spider) Scan(url string, depth int) (pages []goondex.Page, err error) {
+	data := make(map[string]string)
 
 	err = parse(url, url, depth, data)
 	if err != nil {
-		return data, err
+		return pages, err
 	}
 
-	return data, nil
+	pages = []goondex.Page{}
+	index := 0
+	for url, title := range data {
+		page := goondex.Page{
+			Id:    index,
+			Title: title,
+			Url:   url,
+		}
+		pages = append(pages, page)
+		index++
+	}
+	return pages, nil
 }
 
 // parse рекурсивно обходит ссылки на странице, переданной в url.

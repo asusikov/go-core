@@ -1,6 +1,7 @@
 package engine
 
 import (
+	"goondex/pkg/goondex"
 	"goondex/pkg/spider"
 	"strings"
 )
@@ -8,7 +9,7 @@ import (
 // Поисковый движок
 type Engine struct {
 	scanner Scanner
-	links   map[string]string
+	links   []goondex.Page
 }
 
 func New() *Engine {
@@ -29,11 +30,11 @@ func (eng *Engine) Scan(url string) error {
 }
 
 // Поиск ссылки по слову
-func (eng *Engine) Search(query string) map[string]string {
-	result := make(map[string]string)
-	for k, v := range eng.links {
-		if strings.Contains(k, query) || strings.Contains(v, query) {
-			result[k] = v
+func (eng *Engine) Search(query string) []goondex.Page {
+	result := []goondex.Page{}
+	for _, page := range eng.links {
+		if strings.Contains(page.Title, query) {
+			result = append(result, page)
 		}
 	}
 	return result
