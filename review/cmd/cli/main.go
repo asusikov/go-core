@@ -49,8 +49,11 @@ func initEngine(url string) (eng *engine.Engine, err error) {
 
 func printResult(result map[string]string) {
 	fmt.Println("[Результат]")
-	for k, v := range result {
-		fmt.Printf("Страница \"%s\" имеет адрес: %s\n", v, k)
+	ind := 1
+	for url, title := range result {
+		fmt.Printf("%d. %s\n", ind, url)
+		fmt.Println(title)
+		ind++
 	}
 }
 
