@@ -7,7 +7,7 @@ import (
 
 // Поисковый движок
 type Engine struct {
-	scanner spider.Interface
+	scanner Scanner
 	links   map[string]string
 }
 
