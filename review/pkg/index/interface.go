@@ -1,4 +1,4 @@
-package engine
+package index
 
 import "goondex/goondex"
 
