@@ -1,8 +1,8 @@
 package engine
 
 import (
-	"goondex/pkg/goondex"
-	"goondex/pkg/spider"
+	"goondex"
+	"spider"
 	"strings"
 )
 

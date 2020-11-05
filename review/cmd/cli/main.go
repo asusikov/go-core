@@ -7,8 +7,8 @@ import (
 	"log"
 	"os"
 
-	"goondex/pkg/engine"
-	"goondex/pkg/goondex"
+	"engine"
+	"goondex"
 )
 
 func main() {

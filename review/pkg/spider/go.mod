@@ -1,4 +1,4 @@
-module goondex/pkg/spider
+module spider
 
 go 1.15
 
