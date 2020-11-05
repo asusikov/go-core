@@ -1,8 +1,8 @@
 package engine
 
 import (
+	"goondex/crawler"
 	"goondex/goondex"
-	"goondex/spider"
 	"strings"
 )
 
@@ -14,7 +14,7 @@ type Engine struct {
 
 func New() *Engine {
 	return &Engine{
-		scanner: spider.New(),
+		scanner: crawler.New(),
 	}
 }
 

@@ -1,6 +1,6 @@
-// Package spider реализует сканер содержимого веб-сайтов.
+// Package crawler реализует сканер содержимого веб-сайтов.
 // Пакет позволяет получить список ссылок и заголовков страниц внутри веб-сайта по его URL.
-package spider
+package crawler
 
 import (
 	"net/http"
@@ -10,15 +10,15 @@ import (
 	"goondex/goondex"
 )
 
-type Spider struct{}
+type Crawler struct{}
 
-func New() *Spider {
-	return &Spider{}
+func New() *Crawler {
+	return &Crawler{}
 }
 
 // Scan осуществляет рекурсивный обход ссылок сайта, указанного в URL,
 // с учётом глубины перехода по ссылкам, переданной в depth.
-func (s *Spider) Scan(url string, depth int) (pages []goondex.Page, err error) {
+func (s *Crawler) Scan(url string, depth int) (pages []goondex.Page, err error) {
 	data := make(map[string]string)
 
 	err = parse(url, url, depth, data)
