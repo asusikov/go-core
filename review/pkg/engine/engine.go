@@ -8,20 +8,20 @@ import (
 
 // Поисковый движок
 type Engine struct {
-	scanner Scanner
+	crawler crawler.Interface
 	links   []goondex.Page
 }
 
 func New() *Engine {
 	return &Engine{
-		scanner: crawler.New(),
+		crawler: crawler.New(),
 	}
 }
 
 // Сканировать сайт
 func (eng *Engine) Scan(url string) error {
 	const depth = 2
-	links, err := eng.scanner.Scan(url, depth)
+	links, err := eng.crawler.Scan(url, depth)
 	if err != nil {
 		return err
 	}

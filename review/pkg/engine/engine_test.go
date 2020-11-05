@@ -5,10 +5,10 @@ import (
 	"testing"
 )
 
-type StubScanner struct {
+type StubCrawler struct {
 }
 
-func (st *StubScanner) Scan(string, int) ([]goondex.Page, error) {
+func (st *StubCrawler) Scan(string, int) ([]goondex.Page, error) {
 	links := []goondex.Page{
 		goondex.Page{Id: 1, Url: "yandex.ru", Title: "Яндекс"},
 		goondex.Page{Id: 2, Url: "google.com", Title: "Google"},
@@ -18,7 +18,7 @@ func (st *StubScanner) Scan(string, int) ([]goondex.Page, error) {
 
 func Test_Search(t *testing.T) {
 	eng := Engine{
-		scanner: &StubScanner{},
+		crawler: &StubCrawler{},
 	}
 	eng.Scan("example.com")
 	want := "Яндекс"
