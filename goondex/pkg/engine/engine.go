@@ -1,24 +1,34 @@
 package engine
 
 import (
+	"goondex/pkg/spider"
 	"strings"
 )
 
-// Engine - поисковый движок
+// Поисковый движок
 type Engine struct {
-	links map[string]string
+	scanner Scanner
+	links   map[string]string
 }
 
 func New() *Engine {
-	return &Engine{}
+	return &Engine{
+		scanner: spider.New(),
+	}
 }
 
-// Index - индексировать хэш с ссылками
-func (eng *Engine) Index(links map[string]string) {
+// Сканировать сайт
+func (eng *Engine) Scan(url string) error {
+	const depth = 2
+	links, err := eng.scanner.Scan(url, depth)
+	if err != nil {
+		return err
+	}
 	eng.links = links
+	return nil
 }
 
-// Search - поиск ссылок
+// Поиск ссылки по слову
 func (eng *Engine) Search(query string) map[string]string {
 	result := make(map[string]string)
 	for k, v := range eng.links {

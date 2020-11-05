@@ -8,54 +8,56 @@ import (
 	"os"
 
 	"goondex/pkg/engine"
-	"goondex/pkg/spider"
 )
 
 func main() {
 	const depth = 2
 
 	var url string
-	flag.StringVar(&url, "url", "https://bash.im/", "Адрес сайта для сканирования")
-	var query string
-	flag.StringVar(&query, "q", "", "Строка для поиска")
-	var isInteractive bool
-	flag.BoolVar(&isInteractive, "i", false, "Интерактивный режим")
+	flag.StringVar(&url, "url", "https://bash.im", "Адрес сайта для сканирования")
 	flag.Parse()
 
-	fmt.Println("[Сканирование] Страница -", url)
-	data, err := spider.Scan(url, depth)
+	eng, err := initEngine(url)
 	if err != nil {
-		log.Fatalf("ошибка при сканировании сайта %s: %v\n", url, err)
+		log.Fatal(err)
 	}
 
-	eng := engine.New()
-	eng.Index(data)
+	// Флаг, который определяет выполнять ли поиск или нет
+	runSearch := true
+	query := ""
 
-	runLoop := true
-	runSearch := false
+	for runSearch {
+		query, runSearch = interactiveInput()
 
-	for runLoop {
-		if isInteractive {
-			query, runSearch = interactiveInput()
-		}
-
-		if !runSearch {
+		if runSearch {
 			fmt.Println("[Поиск] Запрос -", query)
 			res := eng.Search(query)
 			printResult(res)
 		}
-		runLoop = isInteractive && !runSearch
 	}
+}
+
+func initEngine(url string) (eng *engine.Engine, err error) {
+	eng = engine.New()
+	fmt.Println("[Сканирование] Страница -", url)
+	err = eng.Scan(url)
+	if err != nil {
+		return eng, fmt.Errorf("ошибка при сканировании сайта %s: %v\n", url, err)
+	}
+	return eng, nil
 }
 
 func printResult(result map[string]string) {
 	fmt.Println("[Результат]")
-	for k, v := range result {
-		fmt.Printf("Страница \"%s\" имеет адрес: %s\n", v, k)
+	ind := 1
+	for url, title := range result {
+		fmt.Printf("%d. %s\n", ind, url)
+		fmt.Println(title)
+		ind++
 	}
 }
 
-func interactiveInput() (input string, isExitCommand bool) {
+func interactiveInput() (input string, runSearch bool) {
 	const exitCommand = "/q"
 
 	fmt.Println("[Ввод запроса] Введите запрос или /q для выхода:")
@@ -64,5 +66,5 @@ func interactiveInput() (input string, isExitCommand bool) {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
 	input = scanner.Text()
-	return input, input == exitCommand
+	return input, input != exitCommand
 }
