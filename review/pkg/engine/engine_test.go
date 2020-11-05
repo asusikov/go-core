@@ -1,7 +1,7 @@
 package engine
 
 import (
-	"goondex/pkg/goondex"
+	"goondex/goondex"
 	"testing"
 )
 

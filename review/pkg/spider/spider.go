@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"golang.org/x/net/html"
-	"goondex/pkg/goondex"
+	"goondex/goondex"
 )
 
 type Spider struct{}

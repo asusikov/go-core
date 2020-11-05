@@ -1,6 +1,6 @@
 package engine
 
-import "goondex/pkg/goondex"
+import "goondex/goondex"
 
 // Позволяет сканировать сайты
 type Scanner interface {

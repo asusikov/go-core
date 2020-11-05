@@ -1,6 +1,6 @@
 package engine
 
-import "goondex/pkg/goondex"
+import "goondex/goondex"
 
 // Позволяет добавлять документы в индекс и искать по индексу
 type Index interface {
