@@ -28,7 +28,7 @@ func main() {
 	query := ""
 
 	for runSearch {
-		query, runSearch = interactiveInput()
+		query, runSearch = userInput()
 
 		if runSearch {
 			fmt.Println("[Поиск] Запрос -", query)
@@ -56,7 +56,7 @@ func printResult(result []goondex.Page) {
 	}
 }
 
-func interactiveInput() (input string, runSearch bool) {
+func userInput() (input string, runSearch bool) {
 	const exitCommand = "/q"
 
 	fmt.Println("[Ввод запроса] Введите запрос или /q для выхода:")
