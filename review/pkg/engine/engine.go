@@ -2,14 +2,14 @@ package engine
 
 import (
 	"goondex/crawler"
-	"goondex/goondex"
+	"goondex/web"
 	"strings"
 )
 
 // Поисковый движок
 type Engine struct {
 	crawler crawler.Interface
-	links   []goondex.Page
+	links   []web.Page
 }
 
 func New() *Engine {
@@ -30,8 +30,8 @@ func (eng *Engine) Scan(url string) error {
 }
 
 // Поиск ссылки по слову
-func (eng *Engine) Search(query string) []goondex.Page {
-	result := []goondex.Page{}
+func (eng *Engine) Search(query string) []web.Page {
+	result := []web.Page{}
 	for _, page := range eng.links {
 		if strings.Contains(page.Title, query) {
 			result = append(result, page)

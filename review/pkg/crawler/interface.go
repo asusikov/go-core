@@ -1,7 +1,7 @@
 package crawler
 
-import "goondex/goondex"
+import "goondex/web"
 
 type Interface interface {
-	Scan(string, int) ([]goondex.Page, error)
+	Scan(string, int) ([]web.Page, error)
 }

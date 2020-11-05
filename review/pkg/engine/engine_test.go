@@ -1,17 +1,17 @@
 package engine
 
 import (
-	"goondex/goondex"
+	"goondex/web"
 	"testing"
 )
 
 type StubCrawler struct {
 }
 
-func (st *StubCrawler) Scan(string, int) ([]goondex.Page, error) {
-	links := []goondex.Page{
-		goondex.Page{Id: 1, Url: "yandex.ru", Title: "Яндекс"},
-		goondex.Page{Id: 2, Url: "google.com", Title: "Google"},
+func (st *StubCrawler) Scan(string, int) ([]web.Page, error) {
+	links := []web.Page{
+		web.Page{Id: 1, Url: "yandex.ru", Title: "Яндекс"},
+		web.Page{Id: 2, Url: "google.com", Title: "Google"},
 	}
 	return links, nil
 }

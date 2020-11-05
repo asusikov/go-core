@@ -1,4 +1,4 @@
-package goondex
+package web
 
 // Описание страницы
 type Page struct {

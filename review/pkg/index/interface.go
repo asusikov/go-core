@@ -1,9 +1,9 @@
 package index
 
-import "goondex/goondex"
+import "goondex/web"
 
 // Позволяет добавлять документы в индекс и искать по индексу
 type Index interface {
-	Add(page goondex.Page)
+	Add(page web.Page)
 	Search(query string) []int
 }

@@ -2,4 +2,4 @@ run:
 	@go run ./cmd/cli/main.go
 
 test:
-	@go test goondex/engine goondex/goondex goondex/index goondex/crawler
+	@go test goondex/engine goondex/web goondex/index goondex/crawler

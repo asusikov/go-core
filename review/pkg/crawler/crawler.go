@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"golang.org/x/net/html"
-	"goondex/goondex"
+	"goondex/web"
 )
 
 type Crawler struct{}
@@ -18,7 +18,7 @@ func New() *Crawler {
 
 // Scan осуществляет рекурсивный обход ссылок сайта, указанного в URL,
 // с учётом глубины перехода по ссылкам, переданной в depth.
-func (s *Crawler) Scan(url string, depth int) (pages []goondex.Page, err error) {
+func (s *Crawler) Scan(url string, depth int) (pages []web.Page, err error) {
 	data := make(map[string]string)
 
 	err = parse(url, url, depth, data)
@@ -26,10 +26,10 @@ func (s *Crawler) Scan(url string, depth int) (pages []goondex.Page, err error) 
 		return pages, err
 	}
 
-	pages = []goondex.Page{}
+	pages = []web.Page{}
 	index := 0
 	for url, title := range data {
-		page := goondex.Page{
+		page := web.Page{
 			Id:    index,
 			Title: title,
 			Url:   url,
