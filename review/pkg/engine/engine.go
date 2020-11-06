@@ -2,6 +2,7 @@ package engine
 
 import (
 	"goondex/crawler"
+	"goondex/index"
 	"goondex/web"
 	"strings"
 )
@@ -9,13 +10,8 @@ import (
 // Поисковый движок
 type Engine struct {
 	crawler crawler.Interface
+	index   index.Interface
 	links   []web.Page
-}
-
-func New() *Engine {
-	return &Engine{
-		crawler: crawler.New(),
-	}
 }
 
 // Сканировать сайт
@@ -38,4 +34,11 @@ func (eng *Engine) Search(query string) []web.Page {
 		}
 	}
 	return result
+}
+
+func New() *Engine {
+	return &Engine{
+		crawler: crawler.New(),
+		index:   index.New(),
+	}
 }
