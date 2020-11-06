@@ -16,7 +16,7 @@ func (st *StubCrawler) Scan(string, int) ([]web.Page, error) {
 	return links, nil
 }
 
-func Test_Search(t *testing.T) {
+func TestSearch(t *testing.T) {
 	eng := Engine{
 		crawler: &StubCrawler{},
 	}
