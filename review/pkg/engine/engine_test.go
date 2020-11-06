@@ -1,6 +1,7 @@
 package engine
 
 import (
+	"goondex/index"
 	"goondex/web"
 	"testing"
 )
@@ -19,6 +20,8 @@ func (st *StubCrawler) Scan(string, int) ([]web.Page, error) {
 func TestSearch(t *testing.T) {
 	eng := Engine{
 		crawler: &StubCrawler{},
+		index:   index.New(),
+		pages:   make(map[int]web.Page),
 	}
 	eng.Scan("example.com")
 	want := "Яндекс"

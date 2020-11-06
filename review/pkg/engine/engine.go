@@ -4,34 +4,34 @@ import (
 	"goondex/crawler"
 	"goondex/index"
 	"goondex/web"
-	"strings"
 )
 
 // Поисковый движок
 type Engine struct {
 	crawler crawler.Interface
 	index   index.Interface
-	links   []web.Page
+	pages   map[int]web.Page
 }
 
 // Сканировать сайт
 func (eng *Engine) Scan(url string) error {
 	const depth = 2
-	links, err := eng.crawler.Scan(url, depth)
+	pages, err := eng.crawler.Scan(url, depth)
 	if err != nil {
 		return err
 	}
-	eng.links = links
+	for _, page := range pages {
+		eng.pages[page.Id] = page
+		eng.index.Add(page)
+	}
 	return nil
 }
 
 // Поиск ссылки по слову
 func (eng *Engine) Search(query string) []web.Page {
 	result := []web.Page{}
-	for _, page := range eng.links {
-		if strings.Contains(page.Title, query) {
-			result = append(result, page)
-		}
+	for _, id := range eng.index.Search(query) {
+		result = append(result, eng.pages[id])
 	}
 	return result
 }
@@ -40,5 +40,6 @@ func New() *Engine {
 	return &Engine{
 		crawler: crawler.New(),
 		index:   index.New(),
+		pages:   make(map[int]web.Page),
 	}
 }
