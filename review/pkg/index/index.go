@@ -12,12 +12,13 @@ type Index struct {
 func (ind *Index) Add(page web.Page) {
 	tokens := extractTokens(page.Title)
 	for _, token := range tokens {
-		ind.tokens[token] = append(ind.tokens[token], page.Id)
+		lowerToken := strings.ToLower(token)
+		ind.tokens[lowerToken] = append(ind.tokens[lowerToken], page.Id)
 	}
 }
 
 func (ind *Index) Search(query string) []int {
-	return ind.tokens[query]
+	return ind.tokens[strings.ToLower(query)]
 }
 
 func New() *Index {
