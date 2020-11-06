@@ -7,7 +7,7 @@ import (
 )
 
 func TestSearch(t *testing.T) {
-	ind := Index{}
+	ind := New()
 	ind.Add(web.Page{Id: 1, Url: "yandex.ru", Title: "Яндекс"})
 	ind.Add(web.Page{Id: 2, Url: "google.com", Title: "Google"})
 	want := []int{1}
