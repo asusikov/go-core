@@ -1,6 +1,9 @@
 package storage
 
-import "goondex/web"
+import (
+	"goondex/web"
+	"sort"
+)
 
 type Interface interface {
 	Insert(page web.Page)
@@ -8,19 +11,27 @@ type Interface interface {
 }
 
 type Storage struct {
-	pages map[int]web.Page
+	pages []web.Page
 }
 
 func (st *Storage) Insert(page web.Page) {
-	st.pages[page.Id] = page
+	pos := findPos(st.pages, page.Id)
+	st.pages = append(st.pages, web.Page{})
+	copy(st.pages[pos+1:], st.pages[pos:])
+	st.pages[pos] = page
 }
 
 func (st *Storage) Find(id int) web.Page {
-	return st.pages[id]
+	pos := findPos(st.pages, id)
+	return st.pages[pos]
 }
 
 func New() *Storage {
 	return &Storage{
-		pages: make(map[int]web.Page),
+		pages: []web.Page{},
 	}
+}
+
+func findPos(pages []web.Page, id int) int {
+	return sort.Search(len(pages), func(i int) bool { return pages[i].Id <= id })
 }
