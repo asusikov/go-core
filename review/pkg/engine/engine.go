@@ -22,7 +22,7 @@ func (eng *Engine) Scan(url string) error {
 		return err
 	}
 	for _, page := range pages {
-		eng.storage.Add(page)
+		eng.storage.Insert(page)
 		eng.index.Add(page)
 	}
 	return nil

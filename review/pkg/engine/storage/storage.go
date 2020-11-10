@@ -3,7 +3,7 @@ package storage
 import "goondex/web"
 
 type Interface interface {
-	Add(page web.Page)
+	Insert(page web.Page)
 	Find(id int) web.Page
 }
 
@@ -11,7 +11,7 @@ type Storage struct {
 	pages map[int]web.Page
 }
 
-func (st *Storage) Add(page web.Page) {
+func (st *Storage) Insert(page web.Page) {
 	st.pages[page.Id] = page
 }
 
