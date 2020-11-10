@@ -2,6 +2,7 @@ package engine
 
 import (
 	"goondex/crawler"
+	"goondex/engine/storage"
 	"goondex/index"
 	"goondex/web"
 )
@@ -10,7 +11,7 @@ import (
 type Engine struct {
 	crawler crawler.Interface
 	index   index.Interface
-	pages   map[int]web.Page
+	storage storage.Interface
 }
 
 // Сканировать сайт
@@ -21,7 +22,7 @@ func (eng *Engine) Scan(url string) error {
 		return err
 	}
 	for _, page := range pages {
-		eng.pages[page.Id] = page
+		eng.storage.Add(page)
 		eng.index.Add(page)
 	}
 	return nil
@@ -31,7 +32,8 @@ func (eng *Engine) Scan(url string) error {
 func (eng *Engine) Search(query string) []web.Page {
 	result := []web.Page{}
 	for _, id := range eng.index.Search(query) {
-		result = append(result, eng.pages[id])
+		page := eng.storage.Find(id)
+		result = append(result, page)
 	}
 	return result
 }
@@ -40,6 +42,6 @@ func New() *Engine {
 	return &Engine{
 		crawler: crawler.New(),
 		index:   index.New(),
-		pages:   make(map[int]web.Page),
+		storage: storage.New(),
 	}
 }
