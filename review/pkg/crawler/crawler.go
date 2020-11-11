@@ -3,11 +3,14 @@
 package crawler
 
 import (
+	"math/rand"
 	"net/http"
 	"strings"
+	"time"
+
+	"goondex/web"
 
 	"golang.org/x/net/html"
-	"goondex/web"
 )
 
 type Crawler struct{}
@@ -26,6 +29,7 @@ func (s *Crawler) Scan(url string, depth int) (pages []web.Page, err error) {
 		return pages, err
 	}
 
+	rand.Seed(time.Now().UnixNano())
 	pages = []web.Page{}
 	index := 0
 	for url, title := range data {
@@ -34,10 +38,18 @@ func (s *Crawler) Scan(url string, depth int) (pages []web.Page, err error) {
 			Title: title,
 			Url:   url,
 		}
-		pages = append(pages, page)
+		pages = insertRandom(pages, page)
 		index++
 	}
 	return pages, nil
+}
+
+func insertRandom(pages []web.Page, page web.Page) []web.Page {
+	pages = append(pages, web.Page{})
+	pos := rand.Intn(len(pages))
+	copy(pages[pos+1:], pages[pos:])
+	pages[pos] = page
+	return pages
 }
 
 // parse рекурсивно обходит ссылки на странице, переданной в url.
