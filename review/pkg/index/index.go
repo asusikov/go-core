@@ -6,24 +6,24 @@ import (
 )
 
 type Index struct {
-	tokens map[string][]int
+	index map[string][]int
 }
 
 func (ind *Index) Add(page web.Page) {
 	tokens := extractTokens(page.Title)
 	for _, token := range tokens {
 		lowerToken := strings.ToLower(token)
-		ind.tokens[lowerToken] = append(ind.tokens[lowerToken], page.Id)
+		ind.index[lowerToken] = append(ind.index[lowerToken], page.ID)
 	}
 }
 
 func (ind *Index) Search(query string) []int {
-	return ind.tokens[strings.ToLower(query)]
+	return ind.index[strings.ToLower(query)]
 }
 
 func New() *Index {
 	return &Index{
-		tokens: make(map[string][]int),
+		index: make(map[string][]int),
 	}
 }
 

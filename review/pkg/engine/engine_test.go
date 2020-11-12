@@ -12,8 +12,8 @@ type StubCrawler struct {
 
 func (st *StubCrawler) Scan(string, int) ([]web.Page, error) {
 	links := []web.Page{
-		web.Page{Id: 1, Url: "yandex.ru", Title: "Яндекс"},
-		web.Page{Id: 2, Url: "google.com", Title: "Google"},
+		web.Page{ID: 1, URL: "yandex.ru", Title: "Яндекс"},
+		web.Page{ID: 2, URL: "google.com", Title: "Google"},
 	}
 	return links, nil
 }

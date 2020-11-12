@@ -10,9 +10,9 @@ func TestInsert(t *testing.T) {
 	storage := Storage{
 		pages: []web.Page{},
 	}
-	page1 := web.Page{Id: 1}
-	page2 := web.Page{Id: 2}
-	page3 := web.Page{Id: 3}
+	page1 := web.Page{ID: 1}
+	page2 := web.Page{ID: 2}
+	page3 := web.Page{ID: 3}
 	storage.Insert(page2)
 	storage.Insert(page1)
 	storage.Insert(page3)
@@ -30,9 +30,9 @@ func TestInsert(t *testing.T) {
 func TestFind(t *testing.T) {
 	storage := Storage{
 		pages: []web.Page{
-			web.Page{Id: 3},
-			web.Page{Id: 2},
-			web.Page{Id: 1},
+			web.Page{ID: 3},
+			web.Page{ID: 2},
+			web.Page{ID: 1},
 		},
 	}
 	want := storage.pages[1]

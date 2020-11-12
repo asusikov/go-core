@@ -34,9 +34,9 @@ func (s *Crawler) Scan(url string, depth int) (pages []web.Page, err error) {
 	index := 0
 	for url, title := range data {
 		page := web.Page{
-			Id:    index,
+			ID:    index,
 			Title: title,
-			Url:   url,
+			URL:   url,
 		}
 		pages = insertRandom(pages, page)
 		index++
@@ -44,6 +44,7 @@ func (s *Crawler) Scan(url string, depth int) (pages []web.Page, err error) {
 	return pages, nil
 }
 
+// добавляет страницу в произвольное позицию в слайсе
 func insertRandom(pages []web.Page, page web.Page) []web.Page {
 	pages = append(pages, web.Page{})
 	pos := rand.Intn(len(pages))

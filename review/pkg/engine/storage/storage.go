@@ -15,7 +15,7 @@ type Storage struct {
 }
 
 func (st *Storage) Insert(page web.Page) {
-	pos := findPos(st.pages, page.Id)
+	pos := findPos(st.pages, page.ID)
 	st.pages = append(st.pages, web.Page{})
 	copy(st.pages[pos+1:], st.pages[pos:])
 	st.pages[pos] = page
@@ -33,5 +33,5 @@ func New() *Storage {
 }
 
 func findPos(pages []web.Page, id int) int {
-	return sort.Search(len(pages), func(i int) bool { return pages[i].Id <= id })
+	return sort.Search(len(pages), func(i int) bool { return pages[i].ID <= id })
 }

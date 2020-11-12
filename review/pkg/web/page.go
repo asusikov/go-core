@@ -2,7 +2,7 @@ package web
 
 // Описание страницы
 type Page struct {
-	Url   string
+	URL   string
 	Title string
-	Id    int
+	ID    int
 }

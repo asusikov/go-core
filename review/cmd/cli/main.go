@@ -51,7 +51,7 @@ func initEngine(url string) (eng *engine.Engine, err error) {
 func printResult(result []web.Page) {
 	fmt.Println("[Результат]")
 	for index, page := range result {
-		fmt.Printf("%d. %s\n", index, page.Url)
+		fmt.Printf("%d. %s\n", index, page.URL)
 		fmt.Println(page.Title)
 	}
 }
