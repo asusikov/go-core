@@ -1,31 +1,56 @@
-// Package spider реализует сканер содержимого веб-сайтов.
+// Package crawler реализует сканер содержимого веб-сайтов.
 // Пакет позволяет получить список ссылок и заголовков страниц внутри веб-сайта по его URL.
-package spider
+package crawler
 
 import (
+	"math/rand"
 	"net/http"
 	"strings"
+	"time"
+
+	"goondex/web"
 
 	"golang.org/x/net/html"
 )
 
-type Spider struct{}
+type Crawler struct{}
 
-func New() *Spider {
-	return &Spider{}
+func New() *Crawler {
+	return &Crawler{}
 }
 
 // Scan осуществляет рекурсивный обход ссылок сайта, указанного в URL,
 // с учётом глубины перехода по ссылкам, переданной в depth.
-func (s *Spider) Scan(url string, depth int) (data map[string]string, err error) {
-	data = make(map[string]string)
+func (s *Crawler) Scan(url string, depth int) (pages []web.Page, err error) {
+	data := make(map[string]string)
 
 	err = parse(url, url, depth, data)
 	if err != nil {
-		return data, err
+		return pages, err
 	}
 
-	return data, nil
+	rand.Seed(time.Now().UnixNano())
+	pages = []web.Page{}
+	index := 0
+	for url, title := range data {
+		page := web.Page{
+			ID:    index,
+			Title: title,
+			URL:   url,
+		}
+		pages = insertRandom(pages, page)
+		index++
+	}
+	return pages, nil
+}
+
+// добавляет страницу в произвольное позицию в слайсе
+func insertRandom(pages []web.Page, page web.Page) []web.Page {
+	pages = append(pages, web.Page{})
+	pos := rand.Intn(len(pages))
+	copy(pages[pos+1:], pages[pos:])
+	pages[pos] = page
+	return pages
 }
 
 // parse рекурсивно обходит ссылки на странице, переданной в url.

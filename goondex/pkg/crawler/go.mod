@@ -1,4 +1,4 @@
-module goondex/pkg/spider
+module crawler
 
 go 1.15
 
