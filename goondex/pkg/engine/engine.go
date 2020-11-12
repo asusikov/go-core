@@ -1,40 +1,50 @@
 package engine
 
 import (
-	"goondex/pkg/spider"
-	"strings"
+	"goondex/crawler"
+	"goondex/engine/storage"
+	"goondex/index"
+	"goondex/web"
 )
 
 // Поисковый движок
 type Engine struct {
-	scanner Scanner
-	links   map[string]string
-}
-
-func New() *Engine {
-	return &Engine{
-		scanner: spider.New(),
-	}
+	crawler crawler.Interface
+	index   index.Interface
+	storage storage.Interface
 }
 
 // Сканировать сайт
 func (eng *Engine) Scan(url string) error {
 	const depth = 2
-	links, err := eng.scanner.Scan(url, depth)
+	pages, err := eng.crawler.Scan(url, depth)
 	if err != nil {
 		return err
 	}
-	eng.links = links
+	for _, page := range pages {
+		eng.storage.Insert(page)
+		eng.index.Add(page)
+	}
 	return nil
 }
 
 // Поиск ссылки по слову
-func (eng *Engine) Search(query string) map[string]string {
-	result := make(map[string]string)
-	for k, v := range eng.links {
-		if strings.Contains(k, query) || strings.Contains(v, query) {
-			result[k] = v
+func (eng *Engine) Search(query string) ([]web.Page, error) {
+	result := []web.Page{}
+	for _, id := range eng.index.Search(query) {
+		page, err := eng.storage.Find(id)
+		if err != nil {
+			return nil, err
 		}
+		result = append(result, *page)
 	}
-	return result
+	return result, nil
+}
+
+func New() *Engine {
+	return &Engine{
+		crawler: crawler.New(),
+		index:   index.New(),
+		storage: storage.New(),
+	}
 }

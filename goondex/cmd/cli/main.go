@@ -7,7 +7,8 @@ import (
 	"log"
 	"os"
 
-	"goondex/pkg/engine"
+	"goondex/engine"
+	"goondex/web"
 )
 
 func main() {
@@ -27,12 +28,16 @@ func main() {
 	query := ""
 
 	for runSearch {
-		query, runSearch = interactiveInput()
+		query, runSearch = userInput()
 
 		if runSearch {
 			fmt.Println("[Поиск] Запрос -", query)
-			res := eng.Search(query)
-			printResult(res)
+			res, err := eng.Search(query)
+			if err == nil {
+				printResult(res)
+			} else {
+				fmt.Printf("[Ошибка] Поиск вернул ошибку %v\n", err)
+			}
 		}
 	}
 }
@@ -42,22 +47,20 @@ func initEngine(url string) (eng *engine.Engine, err error) {
 	fmt.Println("[Сканирование] Страница -", url)
 	err = eng.Scan(url)
 	if err != nil {
-		return eng, fmt.Errorf("ошибка при сканировании сайта %s: %v\n", url, err)
+		return nil, fmt.Errorf("ошибка при сканировании сайта %s: %v", url, err)
 	}
 	return eng, nil
 }
 
-func printResult(result map[string]string) {
+func printResult(result []web.Page) {
 	fmt.Println("[Результат]")
-	ind := 1
-	for url, title := range result {
-		fmt.Printf("%d. %s\n", ind, url)
-		fmt.Println(title)
-		ind++
+	for index, page := range result {
+		fmt.Printf("%d. %s\n", index, page.URL)
+		fmt.Println(page.Title)
 	}
 }
 
-func interactiveInput() (input string, runSearch bool) {
+func userInput() (input string, runSearch bool) {
 	const exitCommand = "/q"
 
 	fmt.Println("[Ввод запроса] Введите запрос или /q для выхода:")
