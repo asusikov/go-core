@@ -43,7 +43,7 @@ func initEngine(url string) (eng *engine.Engine, err error) {
 	fmt.Println("[Сканирование] Страница -", url)
 	err = eng.Scan(url)
 	if err != nil {
-		return eng, fmt.Errorf("ошибка при сканировании сайта %s: %v\n", url, err)
+		return eng, fmt.Errorf("ошибка при сканировании сайта %s: %v", url, err)
 	}
 	return eng, nil
 }
