@@ -38,5 +38,5 @@ func New() *Storage {
 }
 
 func findPos(pages []web.Page, id int) int {
-	return sort.Search(len(pages), func(i int) bool { return pages[i].ID == id })
+	return sort.Search(len(pages), func(i int) bool { return pages[i].ID <= id })
 }
