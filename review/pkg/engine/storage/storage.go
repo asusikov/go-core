@@ -1,13 +1,14 @@
 package storage
 
 import (
+	"fmt"
 	"goondex/web"
 	"sort"
 )
 
 type Interface interface {
 	Insert(page web.Page)
-	Find(id int) web.Page
+	Find(id int) (*web.Page, error)
 }
 
 type Storage struct {
@@ -21,9 +22,13 @@ func (st *Storage) Insert(page web.Page) {
 	st.pages[pos] = page
 }
 
-func (st *Storage) Find(id int) web.Page {
+func (st *Storage) Find(id int) (*web.Page, error) {
 	pos := findPos(st.pages, id)
-	return st.pages[pos]
+	if pos < len(st.pages) {
+		return &st.pages[pos], nil
+	} else {
+		return nil, fmt.Errorf("страница %d не найдена", id)
+	}
 }
 
 func New() *Storage {
@@ -33,5 +38,5 @@ func New() *Storage {
 }
 
 func findPos(pages []web.Page, id int) int {
-	return sort.Search(len(pages), func(i int) bool { return pages[i].ID <= id })
+	return sort.Search(len(pages), func(i int) bool { return pages[i].ID == id })
 }

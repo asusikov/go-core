@@ -29,13 +29,16 @@ func (eng *Engine) Scan(url string) error {
 }
 
 // Поиск ссылки по слову
-func (eng *Engine) Search(query string) []web.Page {
+func (eng *Engine) Search(query string) ([]web.Page, error) {
 	result := []web.Page{}
 	for _, id := range eng.index.Search(query) {
-		page := eng.storage.Find(id)
-		result = append(result, page)
+		page, err := eng.storage.Find(id)
+		if err != nil {
+			return nil, err
+		}
+		result = append(result, *page)
 	}
-	return result
+	return result, nil
 }
 
 func New() *Engine {

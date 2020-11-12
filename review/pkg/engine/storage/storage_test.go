@@ -35,8 +35,11 @@ func TestFind(t *testing.T) {
 			web.Page{ID: 1},
 		},
 	}
-	want := storage.pages[1]
-	got := storage.Find(2)
+	want := &storage.pages[1]
+	got, err := storage.Find(2)
+	if err != nil {
+		t.Fatalf("поиск завершился с ошибкой")
+	}
 	if !reflect.DeepEqual(want, got) {
 		t.Fatalf("ждали %v, получили %v", want, got)
 	}

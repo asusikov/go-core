@@ -32,8 +32,12 @@ func main() {
 
 		if runSearch {
 			fmt.Println("[Поиск] Запрос -", query)
-			res := eng.Search(query)
-			printResult(res)
+			res, err := eng.Search(query)
+			if err == nil {
+				printResult(res)
+			} else {
+				fmt.Printf("[Ошибка] Поиск вернул ошибку %v\n", err)
+			}
 		}
 	}
 }

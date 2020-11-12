@@ -26,7 +26,10 @@ func TestSearch(t *testing.T) {
 	}
 	eng.Scan("example.com")
 	want := "Яндекс"
-	result := eng.Search("Яндекс")
+	result, err := eng.Search("Яндекс")
+	if err != nil {
+		t.Fatalf("поиск вернул ошибку")
+	}
 	if len(result) != 1 {
 		t.Fatalf("длина результата не равна 1")
 	}
