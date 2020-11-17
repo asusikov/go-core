@@ -3,7 +3,7 @@ package engine
 import (
 	"goondex/engine/storage"
 	"goondex/index"
-	"goondex/web"
+	"goondex/webpages"
 )
 
 // Поисковый движок
@@ -13,8 +13,8 @@ type Engine struct {
 }
 
 // Поиск ссылки по слову
-func (eng *Engine) Search(query string) ([]web.Page, error) {
-	result := []web.Page{}
+func (eng *Engine) Search(query string) ([]webpages.Page, error) {
+	result := []webpages.Page{}
 	for _, id := range eng.index.Search(query) {
 		page, err := eng.storage.Find(id)
 		if err != nil {

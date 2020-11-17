@@ -1,7 +1,7 @@
 package index
 
 import (
-	"goondex/web"
+	"goondex/webpages"
 	"strings"
 )
 
@@ -9,7 +9,7 @@ type Index struct {
 	index map[string][]int
 }
 
-func (ind *Index) Add(page web.Page) {
+func (ind *Index) Add(page webpages.Page) {
 	tokens := extractTokens(page.Title)
 	for _, token := range tokens {
 		lowerToken := strings.ToLower(token)

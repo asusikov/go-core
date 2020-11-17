@@ -11,7 +11,7 @@ import (
 	"goondex/engine"
 	"goondex/engine/storage"
 	"goondex/index"
-	"goondex/web"
+	"goondex/webpages"
 )
 
 func main() {
@@ -57,7 +57,7 @@ func initEngine(url string) (eng *engine.Engine, err error) {
 	return eng, nil
 }
 
-func printResult(result []web.Page) {
+func printResult(result []webpages.Page) {
 	fmt.Println("[Результат]")
 	for index, page := range result {
 		fmt.Printf("%d. %s\n", index, page.URL)

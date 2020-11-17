@@ -2,20 +2,20 @@ package engine
 
 import (
 	"errors"
-	"goondex/web"
+	"goondex/webpages"
 	"testing"
 )
 
 type StubStorage struct{}
 
-func (st *StubStorage) Find(id int) (*web.Page, error) {
+func (st *StubStorage) Find(id int) (*webpages.Page, error) {
 	if id == 1 {
-		return &web.Page{ID: 1, URL: "yandex.ru", Title: "Яндекс"}, nil
+		return &webpages.Page{ID: 1, URL: "yandex.ru", Title: "Яндекс"}, nil
 	} else {
 		return nil, errors.New("not found")
 	}
 }
-func (st *StubStorage) Insert(page web.Page) {}
+func (st *StubStorage) Insert(page webpages.Page) {}
 
 type StubIndex struct{}
 
@@ -26,7 +26,7 @@ func (si *StubIndex) Search(query string) []int {
 		return []int{}
 	}
 }
-func (si *StubIndex) Add(web.Page) {}
+func (si *StubIndex) Add(webpages.Page) {}
 
 func TestSearch(t *testing.T) {
 	eng := Engine{

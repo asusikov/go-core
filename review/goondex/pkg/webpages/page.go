@@ -1,4 +1,4 @@
-package web
+package webpages
 
 // Описание страницы
 type Page struct {

@@ -8,14 +8,14 @@ import (
 	"strings"
 	"time"
 
-	"goondex/web"
+	"goondex/webpages"
 
 	"golang.org/x/net/html"
 )
 
 // Scan осуществляет рекурсивный обход ссылок сайта, указанного в URL,
 // с учётом глубины перехода по ссылкам, переданной в depth.
-func Scan(url string, depth int) (pages []web.Page, err error) {
+func Scan(url string, depth int) (pages []webpages.Page, err error) {
 	data := make(map[string]string)
 
 	err = parse(url, url, depth, data)
@@ -24,10 +24,10 @@ func Scan(url string, depth int) (pages []web.Page, err error) {
 	}
 
 	rand.Seed(time.Now().UnixNano())
-	pages = []web.Page{}
+	pages = []webpages.Page{}
 	index := 0
 	for url, title := range data {
-		page := web.Page{
+		page := webpages.Page{
 			ID:    index,
 			Title: title,
 			URL:   url,
@@ -39,8 +39,8 @@ func Scan(url string, depth int) (pages []web.Page, err error) {
 }
 
 // добавляет страницу в произвольное позицию в слайсе
-func insertRandom(pages []web.Page, page web.Page) []web.Page {
-	pages = append(pages, web.Page{})
+func insertRandom(pages []webpages.Page, page webpages.Page) []webpages.Page {
+	pages = append(pages, webpages.Page{})
 	pos := rand.Intn(len(pages))
 	copy(pages[pos+1:], pages[pos:])
 	pages[pos] = page

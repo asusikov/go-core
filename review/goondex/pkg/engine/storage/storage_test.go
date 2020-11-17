@@ -1,22 +1,22 @@
 package storage
 
 import (
-	"goondex/web"
+	"goondex/webpages"
 	"reflect"
 	"testing"
 )
 
 func TestInsert(t *testing.T) {
 	storage := Storage{
-		pages: []web.Page{},
+		pages: []webpages.Page{},
 	}
-	page1 := web.Page{ID: 1}
-	page2 := web.Page{ID: 2}
-	page3 := web.Page{ID: 3}
+	page1 := webpages.Page{ID: 1}
+	page2 := webpages.Page{ID: 2}
+	page3 := webpages.Page{ID: 3}
 	storage.Insert(page2)
 	storage.Insert(page1)
 	storage.Insert(page3)
-	want := []web.Page{
+	want := []webpages.Page{
 		page3,
 		page2,
 		page1,
@@ -29,10 +29,10 @@ func TestInsert(t *testing.T) {
 
 func TestFind(t *testing.T) {
 	storage := Storage{
-		pages: []web.Page{
-			web.Page{ID: 3},
-			web.Page{ID: 2},
-			web.Page{ID: 1},
+		pages: []webpages.Page{
+			webpages.Page{ID: 3},
+			webpages.Page{ID: 2},
+			webpages.Page{ID: 1},
 		},
 	}
 	want := &storage.pages[1]
