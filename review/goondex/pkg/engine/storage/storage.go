@@ -8,7 +8,7 @@ import (
 
 type Interface interface {
 	Insert(page webpages.Page)
-	Find(id int) (*webpages.Page, error)
+	Find(id uint32) (*webpages.Page, error)
 }
 
 type Storage struct {
@@ -22,7 +22,7 @@ func (st *Storage) Insert(page webpages.Page) {
 	st.pages[pos] = page
 }
 
-func (st *Storage) Find(id int) (*webpages.Page, error) {
+func (st *Storage) Find(id uint32) (*webpages.Page, error) {
 	pos := findPos(st.pages, id)
 	if pos < len(st.pages) {
 		return &st.pages[pos], nil
@@ -37,6 +37,6 @@ func New() *Storage {
 	}
 }
 
-func findPos(pages []webpages.Page, id int) int {
+func findPos(pages []webpages.Page, id uint32) int {
 	return sort.Search(len(pages), func(i int) bool { return pages[i].ID <= id })
 }

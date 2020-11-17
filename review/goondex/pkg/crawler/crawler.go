@@ -27,12 +27,8 @@ func Scan(url string, depth int) (pages []webpages.Page, err error) {
 	pages = []webpages.Page{}
 	index := 0
 	for url, title := range data {
-		page := webpages.Page{
-			ID:    index,
-			Title: title,
-			URL:   url,
-		}
-		pages = insertRandom(pages, page)
+		page := webpages.New(title, url)
+		pages = insertRandom(pages, *page)
 		index++
 	}
 	return pages, nil

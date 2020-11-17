@@ -6,7 +6,7 @@ import (
 )
 
 type Index struct {
-	index map[string][]int
+	index map[string][]uint32
 }
 
 func (ind *Index) Add(page webpages.Page) {
@@ -17,13 +17,13 @@ func (ind *Index) Add(page webpages.Page) {
 	}
 }
 
-func (ind *Index) Search(query string) []int {
+func (ind *Index) Search(query string) []uint32 {
 	return ind.index[strings.ToLower(query)]
 }
 
 func New() *Index {
 	return &Index{
-		index: make(map[string][]int),
+		index: make(map[string][]uint32),
 	}
 }
 

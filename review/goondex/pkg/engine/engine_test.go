@@ -8,7 +8,7 @@ import (
 
 type StubStorage struct{}
 
-func (st *StubStorage) Find(id int) (*webpages.Page, error) {
+func (st *StubStorage) Find(id uint32) (*webpages.Page, error) {
 	if id == 1 {
 		return &webpages.Page{ID: 1, URL: "yandex.ru", Title: "Яндекс"}, nil
 	} else {
@@ -19,11 +19,11 @@ func (st *StubStorage) Insert(page webpages.Page) {}
 
 type StubIndex struct{}
 
-func (si *StubIndex) Search(query string) []int {
+func (si *StubIndex) Search(query string) []uint32 {
 	if query == "Яндекс" {
-		return []int{1}
+		return []uint32{1}
 	} else {
-		return []int{}
+		return []uint32{}
 	}
 }
 func (si *StubIndex) Add(webpages.Page) {}
