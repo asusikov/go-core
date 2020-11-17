@@ -25,11 +25,9 @@ func Scan(url string, depth int) (pages []webpages.Page, err error) {
 
 	rand.Seed(time.Now().UnixNano())
 	pages = []webpages.Page{}
-	index := 0
 	for url, title := range data {
 		page := webpages.New(title, url)
 		pages = insertRandom(pages, *page)
-		index++
 	}
 	return pages, nil
 }
