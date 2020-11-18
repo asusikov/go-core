@@ -15,8 +15,6 @@ import (
 )
 
 func main() {
-	const depth = 2
-
 	var url string
 	flag.StringVar(&url, "url", "https://bash.im", "Адрес сайта для сканирования")
 	flag.Parse()
@@ -67,13 +65,9 @@ func printResult(result []webpages.Page) {
 
 func scan(url string, storage storage.Interface, index index.Interface) error {
 	const depth = 2
-	pages, err := crawler.Scan(url, depth)
+	err := crawler.Scan(url, depth, storage, index)
 	if err != nil {
 		return err
-	}
-	for _, page := range pages {
-		storage.Insert(page)
-		index.Add(page)
 	}
 	return nil
 }
