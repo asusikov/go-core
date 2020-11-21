@@ -8,11 +8,11 @@ import (
 
 type StubStorage struct{}
 
-func (st *StubStorage) Find(id uint32) (*webpages.Page, error) {
+func (st *StubStorage) Find(id uint32) (page webpages.Page, err error) {
 	if id == 1 {
-		return &webpages.Page{ID: 1, URL: "yandex.ru", Title: "Яндекс"}, nil
+		return webpages.Page{ID: 1, URL: "yandex.ru", Title: "Яндекс"}, nil
 	} else {
-		return nil, errors.New("not found")
+		return page, errors.New("not found")
 	}
 }
 func (st *StubStorage) Insert(page webpages.Page) {}
