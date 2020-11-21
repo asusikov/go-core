@@ -9,9 +9,9 @@ import (
 
 	"goondex/crawler"
 	"goondex/engine"
-	"goondex/engine/storage"
 	"goondex/index"
 	"goondex/webpages"
+	"goondex/webpages/storage"
 )
 
 func main() {

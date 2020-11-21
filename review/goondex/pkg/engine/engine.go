@@ -1,9 +1,9 @@
 package engine
 
 import (
-	"goondex/engine/storage"
 	"goondex/index"
 	"goondex/webpages"
+	"goondex/webpages/storage"
 )
 
 // Поисковый движок
@@ -20,7 +20,7 @@ func (eng *Engine) Search(query string) ([]webpages.Page, error) {
 		if err != nil {
 			return nil, err
 		}
-		result = append(result, *page)
+		result = append(result, page)
 	}
 	return result, nil
 }

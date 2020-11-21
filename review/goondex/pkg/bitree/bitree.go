@@ -1,6 +1,11 @@
 // Реализует бинарное дерево
 package bitree
 
+import (
+	"errors"
+	"fmt"
+)
+
 const (
 	Left = iota + 1
 	Equal
@@ -14,8 +19,12 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+type compareFnType = func(interface{}, interface{}) int
+
+var ErrNotFound = errors.New("Value not found")
+
 // Добавить элемент в дерево
-func Add(node *TreeNode, val interface{}, compareFn func(interface{}, interface{}) int) (el *TreeNode) {
+func Add(node *TreeNode, val interface{}, compareFn compareFnType) (el *TreeNode) {
 	initFn := func(value interface{}) *TreeNode {
 		return &TreeNode{
 			Value: value,
@@ -41,4 +50,19 @@ func Add(node *TreeNode, val interface{}, compareFn func(interface{}, interface{
 		el = node
 	}
 	return el
+}
+
+func Search(node *TreeNode, val interface{}, compareFn compareFnType) (el *TreeNode, err error) {
+	if node == nil {
+		return nil, fmt.Errorf("%w: %v", ErrNotFound, val)
+	}
+	switch compareFn(node.Value, val) {
+	case Left:
+		el, err = Search(node.Left, val, compareFn)
+	case Right:
+		el, err = Search(node.Right, val, compareFn)
+	case Equal:
+		el = node
+	}
+	return el, err
 }

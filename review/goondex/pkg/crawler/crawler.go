@@ -4,8 +4,8 @@ package crawler
 
 import (
 	"goondex/crawler/site"
-	"goondex/engine/storage"
 	"goondex/index"
+	"goondex/webpages/storage"
 )
 
 // Scan осуществляет рекурсивный обход ссылок сайта, указанного в URL,
