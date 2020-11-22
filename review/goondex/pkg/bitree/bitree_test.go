@@ -1,6 +1,7 @@
 package bitree
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -28,35 +29,34 @@ func TestAdd(t *testing.T) {
 	}
 
 	tests := []struct {
-		name   string
-		value  int
-		parent *TreeNode
-		branch int
+		name  string
+		value int
+		want  string
 	}{
 		{
-			name:   "Добавление правой ветви к корню",
-			value:  7,
-			parent: root,
-			branch: Right,
+			name:  "Добавление правой ветви к корню",
+			value: 7,
+			want:  " 5 3 7",
 		},
 		{
-			name:   "Добавление правой ветви к ветви",
-			value:  4,
-			parent: root.Left,
-			branch: Right,
+			name:  "Добавление правой ветви к ветви",
+			value: 4,
+			want:  " 5 3 4 7",
 		},
 		{
-			name:   "Добавление левой ветви к ветви",
-			value:  2,
-			parent: root.Left,
-			branch: Left,
+			name:  "Добавление левой ветви к ветви",
+			value: 2,
+			want:  " 5 3 2 4 7",
 		},
 		{
-			name:   "Добавление существующего значения",
-			value:  3,
-			parent: root,
-			branch: Left,
+			name:  "Добавление существующего значения",
+			value: 3,
+			want:  " 5 3 2 4 7",
 		},
+	}
+
+	serializeValueFn := func(value interface{}) string {
+		return fmt.Sprintf(" %v", value.(int))
 	}
 
 	for _, test := range tests {
@@ -68,15 +68,33 @@ func TestAdd(t *testing.T) {
 			if el.Value != test.value {
 				t.Errorf("Значение должно было %v, получили %v", test.value, el.Value)
 			}
-			var node *TreeNode
-			if test.branch == Left {
-				node = test.parent.Left
-			} else {
-				node = test.parent.Right
-			}
-			if test.value != node.Value {
-				t.Errorf("Значение вставлено не верно")
+			got := Serialize(root, serializeValueFn)
+			if test.want != got {
+				t.Errorf("ожидали %s, получили %s", test.want, got)
 			}
 		})
+	}
+}
+
+func TestSerialize(t *testing.T) {
+	root := &TreeNode{
+		Value: "d",
+		Left: &TreeNode{
+			Value: "b",
+			Right: &TreeNode{
+				Value: "c",
+			},
+		},
+		Right: &TreeNode{
+			Value: "e",
+		},
+	}
+	serializeValueFn := func(value interface{}) string {
+		return " " + value.(string)
+	}
+	want := " d b c e"
+	got := Serialize(root, serializeValueFn)
+	if want != got {
+		t.Errorf("ожидали %s, получили %s", want, got)
 	}
 }
