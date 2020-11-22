@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -14,12 +13,17 @@ import (
 	"goondex/webpages/storage"
 )
 
-func main() {
-	var url string
-	flag.StringVar(&url, "url", "https://bash.im", "Адрес сайта для сканирования")
-	flag.Parse()
+var urls = []string{
+	"https://bash.im",
+	"https://go.dev",
+}
 
-	eng, err := initEngine(url)
+func main() {
+	storage := storage.New()
+	index := index.New()
+	eng := engine.New(index, storage)
+
+	err := scan(urls, storage, index)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -43,18 +47,6 @@ func main() {
 	}
 }
 
-func initEngine(url string) (eng *engine.Engine, err error) {
-	index := index.New()
-	storage := storage.New()
-	fmt.Println("[Сканирование] Страница -", url)
-	err = scan(url, storage, index)
-	if err != nil {
-		return nil, fmt.Errorf("ошибка при сканировании сайта %s: %v", url, err)
-	}
-	eng = engine.New(index, storage)
-	return eng, nil
-}
-
 func printResult(result []webpages.Page) {
 	fmt.Println("[Результат]")
 	for index, page := range result {
@@ -63,11 +55,14 @@ func printResult(result []webpages.Page) {
 	}
 }
 
-func scan(url string, storage storage.Interface, index index.Interface) error {
+func scan(urls []string, storage storage.Interface, index index.Interface) error {
 	const depth = 2
-	err := crawler.Scan(url, depth, storage, index)
-	if err != nil {
-		return err
+	for _, url := range urls {
+		fmt.Println("[Сканирование] Страница -", url)
+		err := crawler.Scan(url, depth, storage, index)
+		if err != nil {
+			return fmt.Errorf("ошибка при сканировании сайта %s: %v", url, err)
+		}
 	}
 	return nil
 }
