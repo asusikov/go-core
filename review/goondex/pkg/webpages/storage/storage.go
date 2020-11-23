@@ -40,17 +40,17 @@ func New() *Storage {
 	}
 }
 
-func compareFn(a interface{}, b interface{}) int {
-	apage := a.(webpages.Page)
-	bpage := b.(webpages.Page)
+func compareFn(nodeVal interface{}, newVal interface{}) int {
+	pageNode := nodeVal.(webpages.Page)
+	pageNew := newVal.(webpages.Page)
 	var res int
 	switch true {
-	case apage.ID < bpage.ID:
-		res = bitree.Left
-	case apage.ID == bpage.ID:
-		res = bitree.Equal
-	case apage.ID > bpage.ID:
+	case pageNode.ID < pageNew.ID:
 		res = bitree.Right
+	case pageNode.ID == pageNew.ID:
+		res = bitree.Equal
+	case pageNode.ID > pageNew.ID:
+		res = bitree.Left
 	}
 	return res
 }
