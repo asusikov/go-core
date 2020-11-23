@@ -52,6 +52,7 @@ func Add(node *TreeNode, val interface{}, compareFn compareFnType) (el *TreeNode
 	return el
 }
 
+// Поиск элемента в дереве
 func Search(node *TreeNode, val interface{}, compareFn compareFnType) (el *TreeNode, err error) {
 	if node == nil {
 		return nil, fmt.Errorf("%w: %v", ErrNotFound, val)
@@ -67,10 +68,13 @@ func Search(node *TreeNode, val interface{}, compareFn compareFnType) (el *TreeN
 	return el, err
 }
 
+// Сериализация дерева в строку
 func Serialize(node *TreeNode, serializeValueFn func(interface{}) string) string {
 	if node == nil {
 		return ""
 	}
 
-	return serializeValueFn(node.Value) + Serialize(node.Left, serializeValueFn) + Serialize(node.Right, serializeValueFn)
+	return serializeValueFn(node.Value) +
+		Serialize(node.Left, serializeValueFn) +
+		Serialize(node.Right, serializeValueFn)
 }
