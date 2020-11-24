@@ -7,19 +7,19 @@ import (
 	"testing"
 )
 
-func TestInsert(t *testing.T) {
-	initRoot := func() *bitree.TreeNode {
-		return &bitree.TreeNode{
-			Value: webpages.Page{ID: 5},
-			Left: &bitree.TreeNode{
-				Value: webpages.Page{ID: 3},
-			},
-			Right: &bitree.TreeNode{
-				Value: webpages.Page{ID: 6},
-			},
-		}
+func initRoot() *bitree.TreeNode {
+	return &bitree.TreeNode{
+		Value: webpages.Page{ID: 5},
+		Left: &bitree.TreeNode{
+			Value: webpages.Page{ID: 3},
+		},
+		Right: &bitree.TreeNode{
+			Value: webpages.Page{ID: 6},
+		},
 	}
+}
 
+func TestInsert(t *testing.T) {
 	tests := []struct {
 		name  string
 		value webpages.Page
@@ -71,42 +71,21 @@ func TestInsert(t *testing.T) {
 	}
 }
 
-// func TestInsert(t *testing.T) {
-// 	storage := Storage{
-// 		pages: []webpages.Page{},
-// 	}
-// 	page1 := webpages.Page{ID: 1}
-
-// 	page2 := webpages.Page{ID: 2}
-// 	page3 := webpages.Page{ID: 3}
-// 	storage.Insert(page2)
-// 	storage.Insert(page1)
-// 	storage.Insert(page3)
-// 	want := []webpages.Page{
-// 		page3,
-// 		page2,
-// 		page1,
-// 	}
-// 	got := storage.pages
-// 	if !reflect.DeepEqual(want, got) {
-// 		t.Fatalf("ждали %v, получили %v", want, got)
-// 	}
-// }
-
-// func TestFind(t *testing.T) {
-// 	storage := Storage{
-// 		pages: []webpages.Page{
-// 			webpages.Page{ID: 3},
-// 			webpages.Page{ID: 2},
-// 			webpages.Page{ID: 1},
-// 		},
-// 	}
-// 	want := &storage.pages[1]
-// 	got, err := storage.Find(2)
-// 	if err != nil {
-// 		t.Fatalf("поиск завершился с ошибкой")
-// 	}
-// 	if !reflect.DeepEqual(want, got) {
-// 		t.Fatalf("ждали %v, получили %v", want, got)
-// 	}
-// }
+func TestFind(t *testing.T) {
+	storage := Storage{
+		root: initRoot(),
+	}
+	want := webpages.Page{ID: 9}
+	storage.root.Right.Right = &bitree.TreeNode{Value: want}
+	got, err := storage.Find(11)
+	if err == nil {
+		t.Fatal("поиск закончился без ошибки")
+	}
+	got, err = storage.Find(9)
+	if err != nil {
+		t.Fatalf("поиск закончился с ошибкой %v", err)
+	}
+	if got != want {
+		t.Fatalf("ожидали %v, получили %v", want, got)
+	}
+}

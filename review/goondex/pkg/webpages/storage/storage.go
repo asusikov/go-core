@@ -10,10 +10,12 @@ type Interface interface {
 	Find(id uint32) (webpages.Page, error)
 }
 
+// Хранилище страниц
 type Storage struct {
 	root *bitree.TreeNode
 }
 
+// Вставить страницу в хранилище
 func (st *Storage) Insert(page webpages.Page) {
 	if st.root == nil {
 		st.root = &bitree.TreeNode{
@@ -24,6 +26,7 @@ func (st *Storage) Insert(page webpages.Page) {
 	}
 }
 
+// Поиск страницы по индентификатору
 func (st *Storage) Find(id uint32) (page webpages.Page, err error) {
 	p := webpages.Page{ID: id}
 	node, err := bitree.Search(st.root, p, compareFn)
@@ -34,6 +37,7 @@ func (st *Storage) Find(id uint32) (page webpages.Page, err error) {
 	return page, nil
 }
 
+// Создать новое хранилище
 func New() *Storage {
 	return &Storage{
 		root: nil,
