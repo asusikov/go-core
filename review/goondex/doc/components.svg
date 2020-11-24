@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="996px" preserveAspectRatio="none" style="width:949px;height:996px;" version="1.1" viewBox="0 0 949 996" width="949px" zoomAndPan="magnify"><defs/><g><!--MD5=[14ca0bb4c7042a7cd92ab2ff057815ac]
+cluster goondex--><rect fill="#FFFFFF" height="654.5" style="stroke:#444444;stroke-width:1.0;stroke-dasharray:7.0,7.0;" width="725" x="218.5" y="166"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="86" x="538" y="180.9951">«boundary»</text><text fill="#444444" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="80" x="541" y="199.1484">Goondex</text><text fill="#444444" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="63" x="549.5" y="214.0605">[bin/exe]</text><!--MD5=[e2307af040e3f87d22824e7603ca28ec]
+entity api--><rect fill="#85BBF0" height="99.1563" style="stroke:#78A8D8;stroke-width:1.5;" width="212" x="578.5" y="233"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="83" x="643" y="254.1387">«component»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="29" x="670" y="271.8203">API</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="60" x="654.5" y="286.7324">[net/http]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="686.5" y="302.5576"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="188" x="592.5" y="318.8545">Основное API для поиска</text><!--MD5=[cb028c5091c687ec367cd0cbfd70389f]
+entity engine--><rect fill="#85BBF0" height="99.1563" style="stroke:#78A8D8;stroke-width:1.5;" width="170" x="599.5" y="469.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="83" x="643" y="490.6387">«component»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="59" x="655" y="508.3203">Engine</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="78" x="645.5" y="523.2324">[pkg/engine]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="686.5" y="539.0576"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="146" x="613.5" y="555.3545">Поисковый движок</text><!--MD5=[7c08a4b85b718ec27cf058f21c70da75]
+entity crawler--><rect fill="#85BBF0" height="99.1563" style="stroke:#78A8D8;stroke-width:1.5;" width="188" x="234.5" y="469.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="83" x="287" y="490.6387">«component»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="70" x="293.5" y="508.3203">Crawler</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="81" x="288" y="523.2324">[pkg/crawler]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="330.5" y="539.0576"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="164" x="248.5" y="555.3545">Сканирование сайтов</text><!--MD5=[b30b38ce4569dacde3f8306bd4ec7604]
+entity index--><rect fill="#85BBF0" height="115.4531" style="stroke:#78A8D8;stroke-width:1.5;" width="166" x="277.5" y="689.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="83" x="319" y="710.6387">«component»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="48" x="336.5" y="728.3203">Index</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="70" x="325.5" y="743.2324">[pkg/index]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="362.5" y="759.0576"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="138" x="291.5" y="775.3545">Индексированные</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="74" x="323.5" y="791.6514">страницы</text><!--MD5=[a5a6ae0ba01c8a4589ab26bd33e87aad]
+entity storage--><rect fill="#85BBF0" height="99.1563" style="stroke:#78A8D8;stroke-width:1.5;" width="193" x="560" y="697.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="83" x="615" y="718.6387">«component»</text><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="173" x="570" y="736.3203">Webpages Storage</text><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="147" x="583" y="751.2324">[pkg/webpages/storage]</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="658.5" y="767.0576"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="140" x="588.5" y="783.3545">Хранение страниц</text><!--MD5=[ce4c7fec84eccde686f151fd39cc7387]
+entity script--><rect fill="#438DD5" height="131.75" style="stroke:#3C7FC0;stroke-width:1.5;" width="195" x="7" y="216.5"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="71" x="69" y="237.6387">«container»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="154" x="27.5" y="255.3203">Start script/cron</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="72" x="68.5" y="270.2324">[cron, shell]</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="0" x="106.5" y="286.0576"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="167" x="21" y="302.3545">Запуск по расписанию</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="116" x="44.5" y="318.6514">или при старте</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="95" x="57" y="334.9482">приложения</text><!--MD5=[6cdd8d1af118066c88ae2216f712a512]
+entity webclient--><rect fill="#438DD5" height="66.5625" style="stroke:#3C7FC0;stroke-width:1.5;" width="129" x="620" y="7"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="71" x="649" y="28.1387">«container»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="99" x="635" y="45.8203">Web Client</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="109" x="630" y="60.7324">[HTML, javascript]</text><!--MD5=[3b46e1263fbe578ee2f24db0128b270f]
+entity rdb--><path d="M489,923.5 C489,913.5 583.5,913.5 583.5,913.5 C583.5,913.5 678,913.5 678,923.5 L678,979.0625 C678,989.0625 583.5,989.0625 583.5,989.0625 C583.5,989.0625 489,989.0625 489,979.0625 L489,923.5 " fill="#438DD5" style="stroke:#3C7FC0;stroke-width:1.5;"/><path d="M489,923.5 C489,933.5 583.5,933.5 583.5,933.5 C583.5,933.5 678,933.5 678,923.5 " fill="none" style="stroke:#3C7FC0;stroke-width:1.5;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="71" x="548" y="948.6387">«container»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="169" x="499" y="966.3203">Relation Database</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="79" x="544" y="981.2324">[PostgreSQL]</text><!--MD5=[a18c1907978ecfabf6ca8d244d25199a]
+entity keydb--><path d="M178,923.5 C178,913.5 279.5,913.5 279.5,913.5 C279.5,913.5 381,913.5 381,923.5 L381,979.0625 C381,989.0625 279.5,989.0625 279.5,989.0625 C279.5,989.0625 178,989.0625 178,979.0625 L178,923.5 " fill="#438DD5" style="stroke:#3C7FC0;stroke-width:1.5;"/><path d="M178,923.5 C178,933.5 279.5,933.5 279.5,933.5 C279.5,933.5 381,933.5 381,923.5 " fill="none" style="stroke:#3C7FC0;stroke-width:1.5;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="71" x="244" y="948.6387">«container»</text><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="183" x="188" y="966.3203">Key-Value Database</text><text fill="#FFFFFF" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="42" x="258.5" y="981.2324">[Redis]</text><!--MD5=[310142cd6a94c75b5533e12b9c9b026d]
+link script to crawler--><path d="M166.599,348.51 C201.828,385.39 245.336,430.937 278.375,465.525 " fill="none" id="script-to-crawler" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="281.944,469.261,278.6211,459.9896,278.4908,465.645,272.8355,465.5147,281.944,469.261" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="52" x="278.5" y="391.5669">Запуск</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="106" x="251.5" y="406.6997">сканирования</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="53" x="280.5" y="421.8325">сайтов</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="88" x="263" y="436.0371">[crawler.Scan]</text><!--MD5=[5da1f3de4f48c425a36e628011f11d8c]
+link webclient to api--><path d="M684.5,74.117 C684.5,113.565 684.5,180.527 684.5,227.669 " fill="none" id="webclient-to-api" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="684.5,232.741,688.5,223.741,684.5,227.741,680.5,223.741,684.5,232.741" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="148" x="685.5" y="117.0669">Отправляет запрос</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="68" x="725.5" y="132.1997">на поиск</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="74" x="722.5" y="146.4043">[JSON/HTTP]</text><!--MD5=[e9b5a9e8b116f43219aa3b3ec62de0bc]
+link api to engine--><path d="M684.5,332.089 C684.5,370.605 684.5,424.385 684.5,464.198 " fill="none" id="api-to-engine" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="684.5,469.474,688.5,460.474,684.5,464.474,680.5,460.474,684.5,469.474" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="139" x="685.5" y="399.0669">Поиск страниц по</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="54" x="730.5" y="414.1997">токену</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="97" x="709" y="428.4043">[engine.Search]</text><!--MD5=[f58aecbd45b2182906dece748c71528f]
+link engine to index--><path d="M612.194,568.57 C601.174,577.755 590.495,587.85 581.5,598.5 C561.746,621.889 571.724,638.443 549.5,659.5 C521.287,686.231 483.36,705.781 448.887,719.46 " fill="none" id="engine-to-index" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="443.827,721.436,453.6655,721.8883,448.4845,719.6173,450.7555,714.4363,443.827,721.436" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="47" x="632" y="611.5669">Поиск</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="151" x="582.5" y="626.6997">индентификаторов</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="63" x="626.5" y="641.8325">страниц</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="89" x="613.5" y="656.0371">[index.Search]</text><!--MD5=[703620695ae93117b793f655646bb7a4]
+link engine to storage--><path d="M727.713,568.852 C733.786,578.143 739.108,588.2 742.5,598.5 C750.981,624.25 752.839,634.438 742.5,659.5 C737.51,671.597 729.917,682.895 721.27,693.074 " fill="none" id="engine-to-storage" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="717.774,697.067,726.712,692.9302,721.0675,693.305,720.6928,687.6606,717.774,697.067" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="139" x="750.5" y="619.0669">Поиск страниц по</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="141" x="752" y="634.1997">индентификатору</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="85" x="780" y="648.4043">[storage.Find]</text><!--MD5=[db49e16c5cff5652ca2cfaa445625b9c]
+link crawler to index--><path d="M282.341,568.517 C275.844,577.845 270.146,588.001 266.5,598.5 C257.606,624.111 255.607,634.673 266.5,659.5 C270.558,668.75 276.148,677.447 282.596,685.494 " fill="none" id="crawler-to-index" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="285.828,689.392,283.1638,679.9103,282.6371,685.5426,277.0048,685.0158,285.828,689.392" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="94" x="286" y="619.0669">Добавление</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="136" x="267.5" y="634.1997">страниц в индекс</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="71" x="300" y="648.4043">[index.Add]</text><!--MD5=[c192d043db8ea8dc4e2ed792c9c103f4]
+link crawler to storage--><path d="M382.633,568.502 C391.813,577.98 400.841,588.191 408.5,598.5 C426.758,623.075 417.774,638.986 440.5,659.5 C472.7,688.566 515.893,708.468 555.19,721.779 " fill="none" id="crawler-to-storage" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="559.962,723.369,552.6894,716.7276,555.2187,721.7874,550.1589,724.3168,559.962,723.369" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="94" x="441.5" y="619.0669">Добавление</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="63" x="459.5" y="634.1997">страниц</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="94" x="444" y="648.4043">[storage.Insert]</text><!--MD5=[102665c0f72a6ad5067156e06079aa53]
+link index to keydb--><path d="M295.452,804.706 C287.738,814.491 281.014,825.187 276.5,836.5 C267.533,858.972 267.811,885.966 270.55,908.0453 " fill="none" id="index-to-keydb" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="271.253,913.2558,274.0141,903.8019,270.5847,908.3007,266.0859,904.8712,271.253,913.2558" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="47" x="327" y="849.5669">Поиск</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="151" x="277.5" y="864.6997">индентификаторов</text><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="78" x="314" y="879.8325">по токену</text><!--MD5=[ba3412c287f6fc99532c30c22621a2c6]
+link index to rdb--><path d="M408.408,804.511 C416.937,815.01 425.61,825.986 433.5,836.5 C448.667,856.713 446.919,866.372 465.5,883.5 C476.394,893.5417 489.057,902.6931 501.962,910.7857 " fill="none" id="index-to-rdb" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="506.345,913.4893,500.7839,905.3607,502.0891,910.8649,496.5849,912.1701,506.345,913.4893" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="142" x="466.5" y="864.5669">Хранение индекса</text><!--MD5=[88f79ddbffa90df9339a45e6701bb8df]
+link storage to rdb--><path d="M644.869,796.713 C638.037,822.844 628.571,855.368 617.5,883.5 C614.235,891.7955 610.291,900.4369 606.262,908.6484 " fill="none" id="storage-to-rdb" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="604.018,913.1611,611.6062,906.8826,606.2438,908.6838,604.4426,903.3214,604.018,913.1611" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="141" x="633.5" y="864.5669">Хранение страниц</text><!--MD5=[0cf389d28f5ade9a989d5a90df2ab958]
+@startuml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Component.puml
+
+  Container(script, "Start script/cron", "cron, shell", "Запуск по расписанию или при старте приложения")
+  Container(webclient, "Web Client", "HTML, javascript")
+
+  Boundary(goondex, "Goondex", "bin/exe") {
+    Component(api, "API", "net/http", "Основное API для поиска")
+    Component(engine, "Engine", "pkg/engine", "Поисковый движок")
+    Component(crawler, "Crawler", "pkg/crawler", "Сканирование сайтов")
+    Component(index, "Index", "pkg/index", "Индексированные страницы")
+    Component(storage, "Webpages Storage", "pkg/webpages/storage", "Хранение страниц")
+
+  }
+
+  ContainerDb(rdb, "Relation Database", "PostgreSQL")
+  ContainerDb(keydb, "Key-Value Database", "Redis")
+
+  Rel(script, crawler, "Запуск сканирования сайтов", "crawler.Scan")
+  Rel(webclient, api, "Отправляет запрос на поиск", "JSON/HTTP")
+  Rel(api, engine, "Поиск страниц по токену", "engine.Search")
+  Rel(engine, index, "Поиск индентификаторов страниц", "index.Search")
+  Rel(engine, storage, "Поиск страниц по индентификатору", "storage.Find")
+  Rel(crawler, index, "Добавление страниц в индекс", "index.Add")
+  Rel(crawler, storage, "Добавление страниц", "storage.Insert")
+  Rel(index, keydb, "Поиск индентификаторов по токену")
+  Rel(index, rdb, "Хранение индекса")
+  Rel(storage, rdb, "Хранение страниц")
+@enduml
+
+@startuml
+
+
+
+
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam rectangle {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam database {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam Arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 12
+}
+
+skinparam rectangle<<boundary>> {
+    Shadowing false
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+
+skinparam rectangle<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+
+skinparam rectangle<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+skinparam rectangle<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+skinparam database<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+skinparam database<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+
+skinparam database<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<component>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #000000
+    BackgroundColor #85BBF0
+    BorderColor #78A8D8
+}
+
+skinparam database<<component>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #000000
+    BackgroundColor #85BBF0
+    BorderColor #78A8D8
+}
+
+
+
+
+
+
+  rectangle "==Start script/cron\n//<size:12>[cron, shell]</size>//\n\n Запуск по расписанию или при старте приложения" <<container>> as script
+  rectangle "==Web Client\n//<size:12>[HTML, javascript]</size>//" <<container>> as webclient
+
+  rectangle "==Goondex\n<size:12>[bin/exe]</size>" <<boundary>> as goondex {
+    rectangle "==API\n//<size:12>[net/http]</size>//\n\n Основное API для поиска" <<component>> as api
+    rectangle "==Engine\n//<size:12>[pkg/engine]</size>//\n\n Поисковый движок" <<component>> as engine
+    rectangle "==Crawler\n//<size:12>[pkg/crawler]</size>//\n\n Сканирование сайтов" <<component>> as crawler
+    rectangle "==Index\n//<size:12>[pkg/index]</size>//\n\n Индексированные страницы" <<component>> as index
+    rectangle "==Webpages Storage\n//<size:12>[pkg/webpages/storage]</size>//\n\n Хранение страниц" <<component>> as storage
+
+  }
+
+  database "==Relation Database\n//<size:12>[PostgreSQL]</size>//" <<container>> as rdb
+  database "==Key-Value Database\n//<size:12>[Redis]</size>//" <<container>> as keydb
+
+  script - -> crawler : "===Запуск сканирования сайтов\n//<size:12>[crawler.Scan]</size>//"
+  webclient - -> api : "===Отправляет запрос на поиск\n//<size:12>[JSON/HTTP]</size>//"
+  api - -> engine : "===Поиск страниц по токену\n//<size:12>[engine.Search]</size>//"
+  engine - -> index : "===Поиск индентификаторов страниц\n//<size:12>[index.Search]</size>//"
+  engine - -> storage : "===Поиск страниц по индентификатору\n//<size:12>[storage.Find]</size>//"
+  crawler - -> index : "===Добавление страниц в индекс\n//<size:12>[index.Add]</size>//"
+  crawler - -> storage : "===Добавление страниц\n//<size:12>[storage.Insert]</size>//"
+  index - -> keydb : "===Поиск индентификаторов по токену"
+  index - -> rdb : "===Хранение индекса"
+  storage - -> rdb : "===Хранение страниц"
+@enduml
+
+PlantUML version 1.2020.21beta3(Unknown compile time)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>
