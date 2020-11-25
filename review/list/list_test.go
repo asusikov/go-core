@@ -20,41 +20,88 @@ func TestList_Push(t *testing.T) {
 	}
 }
 
-func TestList_Pop(t *testing.T) {
-
-	l := New()
-	l.Push(Elem{Val: 3})
-	l.Push(Elem{Val: 2})
-	l.Push(Elem{Val: 1})
-
-	got := l.Pop().String()
-	want := "2 3"
-	if got != want {
-		t.Fatalf("получили %s, ожидалось %s", got, want)
+func TestLis_Pop(t *testing.T) {
+	tests := []struct {
+		name     string
+		elements []Elem
+		want     string
+	}{
+		{
+			name: "Удаление из длинного списка",
+			elements: []Elem{
+				Elem{Val: 3},
+				Elem{Val: 2},
+				Elem{Val: 1},
+			},
+			want: "2 3",
+		},
+		{
+			name: "Удаление из списка из одного элемента",
+			elements: []Elem{
+				Elem{Val: 1},
+			},
+			want: "",
+		},
+		{
+			name:     "Удаление из пустого списка",
+			elements: []Elem{},
+			want:     "",
+		},
 	}
 
-	got = l.Pop().Pop().String()
-	want = ""
-	if got != want {
-		t.Fatalf("получили %s, ожидалось %s", got, want)
-	}
-
-	got = l.Pop().String()
-	want = ""
-	if got != want {
-		t.Fatalf("получили %s, ожидалось %s", got, want)
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			l := New()
+			for _, el := range test.elements {
+				l.Push(el)
+			}
+			got := l.Pop().String()
+			if got != test.want {
+				t.Fatalf("получили %s, ожидалось %s", got, test.want)
+			}
+		})
 	}
 }
 
-func TestList_Reverse(t *testing.T) {
-	l := New()
-	l.Push(Elem{Val: 3})
-	l.Push(Elem{Val: 2})
-	l.Push(Elem{Val: 1})
+func TestLis_Reverse(t *testing.T) {
+	tests := []struct {
+		name     string
+		elements []Elem
+		want     string
+	}{
+		{
+			name: "Разворот длинного списка",
+			elements: []Elem{
+				Elem{Val: 3},
+				Elem{Val: 2},
+				Elem{Val: 1},
+			},
+			want: "3 2 1",
+		},
+		{
+			name: "Разворот списка из одного элемента",
+			elements: []Elem{
+				Elem{Val: 1},
+			},
+			want: "1",
+		},
+		{
+			name:     "Разворот пустого списка",
+			elements: []Elem{},
+			want:     "",
+		},
+	}
 
-	got := l.Reverse().String()
-	want := "3"
-	if got != want {
-		t.Fatalf("получили %s, ожидалось %s", got, want)
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			l := New()
+			for _, el := range test.elements {
+				l.Push(el)
+			}
+			got := l.Reverse().String()
+			if got != test.want {
+				t.Fatalf("получили %s, ожидалось %s", got, test.want)
+			}
+		})
 	}
 }
