@@ -2,11 +2,15 @@ package engine
 
 import (
 	"errors"
+	"goondex/index"
 	"goondex/webpages"
+	"goondex/webpages/storage"
 	"testing"
 )
 
-type StubStorage struct{}
+type StubStorage struct {
+	storage.Interface
+}
 
 func (st *StubStorage) Find(id uint32) (page webpages.Page, err error) {
 	if id == 1 {
@@ -15,9 +19,10 @@ func (st *StubStorage) Find(id uint32) (page webpages.Page, err error) {
 		return page, errors.New("not found")
 	}
 }
-func (st *StubStorage) Insert(page webpages.Page) {}
 
-type StubIndex struct{}
+type StubIndex struct {
+	index.Interface
+}
 
 func (si *StubIndex) Search(query string) []uint32 {
 	if query == "Яндекс" {
@@ -26,7 +31,6 @@ func (si *StubIndex) Search(query string) []uint32 {
 		return []uint32{}
 	}
 }
-func (si *StubIndex) Add(webpages.Page) {}
 
 func TestSearch(t *testing.T) {
 	eng := Engine{
