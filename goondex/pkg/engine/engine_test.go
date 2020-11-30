@@ -1,31 +1,42 @@
 package engine
 
 import (
-	"goondex/engine/storage"
+	"errors"
 	"goondex/index"
-	"goondex/web"
+	"goondex/webpages"
+	"goondex/webpages/storage"
 	"testing"
 )
 
-type StubCrawler struct {
+type StubStorage struct {
+	storage.Interface
 }
 
-func (st *StubCrawler) Scan(string, int) ([]web.Page, error) {
-	links := []web.Page{
-		web.Page{ID: 1, URL: "yandex.ru", Title: "Яндекс"},
-		web.Page{ID: 2, URL: "google.com", Title: "Google"},
+func (st *StubStorage) Find(id uint32) (page webpages.Page, err error) {
+	if id == 1 {
+		return webpages.Page{ID: 1, URL: "yandex.ru", Title: "Яндекс"}, nil
+	} else {
+		return page, errors.New("not found")
 	}
-	return links, nil
+}
+
+type StubIndex struct {
+	index.Interface
+}
+
+func (si *StubIndex) Search(query string) []uint32 {
+	if query == "Яндекс" {
+		return []uint32{1}
+	} else {
+		return []uint32{}
+	}
 }
 
 func TestSearch(t *testing.T) {
 	eng := Engine{
-		crawler: &StubCrawler{},
-		index:   index.New(),
-		storage: storage.New(),
+		index:   &StubIndex{},
+		storage: &StubStorage{},
 	}
-	eng.Scan("example.com")
-	want := "Яндекс"
 	result, err := eng.Search("Яндекс")
 	if err != nil {
 		t.Fatalf("поиск вернул ошибку")
@@ -33,6 +44,7 @@ func TestSearch(t *testing.T) {
 	if len(result) != 1 {
 		t.Fatalf("длина результата не равна 1")
 	}
+	want := "Яндекс"
 	got := result[0].Title
 	if got != want {
 		t.Fatalf("для ключа yandex.ru ждали %s, получили %s", want, got)
