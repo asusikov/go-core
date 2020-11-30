@@ -24,5 +24,7 @@ func (dc *DependenciesContainer) init() {
 }
 
 func InitContainer() *DependenciesContainer {
-	return &DependenciesContainer{}
+	dc := &DependenciesContainer{}
+	dc.init()
+	return dc
 }

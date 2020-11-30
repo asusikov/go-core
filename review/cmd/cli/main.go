@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	dc := NewContainer()
+	dc := InitContainer()
 
 	err := scan(dc.urls, dc.storage, dc.index)
 	if err != nil {
