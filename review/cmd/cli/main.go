@@ -7,43 +7,33 @@ import (
 	"os"
 
 	"goondex/crawler"
-	"goondex/engine"
 	"goondex/index"
 	"goondex/webpages"
 	"goondex/webpages/storage"
 )
 
 func main() {
-	var urls = []string{
-		"https://bash.im",
-		"https://go.dev",
-	}
+	dc := NewContainer()
 
-	storage := storage.New()
-	index := index.New()
-	eng := engine.New(index, storage)
-
-	err := scan(urls, storage, index)
+	err := scan(dc.urls, dc.storage, dc.index)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// Флаг, который определяет выполнять ли поиск или нет
-	runSearch := true
-	query := ""
+	for {
+		query, runSearch := userInput()
 
-	for runSearch {
-		query, runSearch = userInput()
+		if !runSearch {
+			break
+		}
 
-		if runSearch {
-			fmt.Println("[Поиск] Запрос -", query)
-			res, err := eng.Search(query)
+		fmt.Println("[Поиск] Запрос -", query)
+		res, err := dc.engine.Search(query)
 
-			if err == nil {
-				printResult(res)
-			} else {
-				fmt.Printf("[Ошибка] Поиск вернул ошибку %v\n", err)
-			}
+		if err == nil {
+			printResult(res)
+		} else {
+			fmt.Printf("[Ошибка] Поиск вернул ошибку %v\n", err)
 		}
 	}
 }
