@@ -2,8 +2,10 @@
 package bitree
 
 import (
+	"encoding/gob"
 	"errors"
 	"fmt"
+	"io"
 )
 
 const (
@@ -12,7 +14,7 @@ const (
 	Right
 )
 
-// Элемент в бинарном дереве
+// Элемент в бинарном дереве.
 type TreeNode struct {
 	Value interface{}
 	Left  *TreeNode
@@ -21,15 +23,18 @@ type TreeNode struct {
 
 type compareFnType = func(interface{}, interface{}) int
 
-var ErrNotFound = errors.New("Value not found")
+var ErrNotFound = errors.New("value not found")
 
-// Добавить элемент в дерево
+// Добавить элемент в дерево.
 func Add(node *TreeNode, val interface{}, compareFn compareFnType) (el *TreeNode) {
 	initFn := func(value interface{}) *TreeNode {
 		return &TreeNode{
 			Value: value,
+			Left:  nil,
+			Right: nil,
 		}
 	}
+
 	switch compareFn(node.Value, val) {
 	case Left:
 		if node.Left != nil {
@@ -49,14 +54,16 @@ func Add(node *TreeNode, val interface{}, compareFn compareFnType) (el *TreeNode
 		node.Value = val
 		el = node
 	}
+
 	return el
 }
 
-// Поиск элемента в дереве
+// Поиск элемента в дереве.
 func Search(node *TreeNode, val interface{}, compareFn compareFnType) (el *TreeNode, err error) {
 	if node == nil {
 		return nil, fmt.Errorf("%w: %v", ErrNotFound, val)
 	}
+
 	switch compareFn(node.Value, val) {
 	case Left:
 		el, err = Search(node.Left, val, compareFn)
@@ -65,10 +72,11 @@ func Search(node *TreeNode, val interface{}, compareFn compareFnType) (el *TreeN
 	case Equal:
 		el = node
 	}
+
 	return el, err
 }
 
-// Сериализация дерева в строку
+// Сериализация дерева в строку.
 func Serialize(node *TreeNode, serializeValueFn func(interface{}) string) string {
 	if node == nil {
 		return ""
@@ -77,4 +85,16 @@ func Serialize(node *TreeNode, serializeValueFn func(interface{}) string) string
 	return serializeValueFn(node.Value) +
 		Serialize(node.Left, serializeValueFn) +
 		Serialize(node.Right, serializeValueFn)
+}
+
+func Write(node *TreeNode, writer io.Writer) error {
+	encoder := gob.NewEncoder(writer)
+
+	return encoder.Encode(node)
+}
+
+func Read(node *TreeNode, reader io.Reader) error {
+	decoder := gob.NewDecoder(reader)
+
+	return decoder.Decode(&node)
 }
