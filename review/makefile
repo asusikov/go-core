@@ -1,5 +1,8 @@
+PKG := goondex
+PKG_LIST := $(shell go list ${PKG}/... | grep -v /vendor/)
+
 run:
 	@go run goondex/cli
 
 test:
-	@go test goondex/engine goondex/webpages/storage goondex/webpages goondex/index goondex/crawler goondex/bitree
+	@go test -short ${PKG_LIST}
